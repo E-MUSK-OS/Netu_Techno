@@ -1,5 +1,6 @@
 import React from "react";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { FadeInStagger, FadeInStaggerItem } from "@/components/shared/Motion";
 import { Search, Compass, Code, Rocket, CheckCircle } from "lucide-react";
 
 export function ProcessSection() {
@@ -67,7 +68,7 @@ export function ProcessSection() {
           description="Software projects fail when assumptions replace clear engineering specifications. Our structured 4-step framework ensures complete predictability from kickoff to release."
         />
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <FadeInStagger className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step) => {
             const Icon = step.icon;
             const timelines: Record<string, string> = {
@@ -84,10 +85,8 @@ export function ProcessSection() {
             };
 
             return (
-              <div
-                key={step.number}
-                className="card-luxury rounded-3xl p-7 lg:p-8 flex flex-col justify-between group relative overflow-hidden card-hairline-gold"
-              >
+              <FadeInStaggerItem key={step.number}>
+                <div className="card-luxury rounded-3xl p-7 lg:p-8 flex flex-col justify-between group relative overflow-hidden card-hairline-gold h-full">
                 {/* Subtle top corner ambient glow */}
                 <div className="absolute top-0 right-0 w-28 h-28 bg-[#C59B27]/5 rounded-bl-full pointer-events-none group-hover:bg-[#C59B27]/10 transition-colors duration-300" />
 
@@ -111,15 +110,15 @@ export function ProcessSection() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-900 mb-1.5 tracking-tight group-hover:text-[#9E7A18] transition-colors">
+                  <h3 className="text-xl font-bold text-[#273138] mb-1.5 tracking-tight group-hover:text-[#9E7A18] transition-colors">
                     {step.title}
                   </h3>
 
-                  <div className="text-xs font-semibold text-[#8C6D15] mb-4">
+                  <div className="text-sm font-semibold text-[#8C6D15] mb-4">
                     {step.summary}
                   </div>
 
-                  <p className="text-xs text-slate-600 leading-relaxed font-normal mb-6">
+                  <p className="text-sm text-slate-600 leading-relaxed font-normal mb-6">
                     {step.description}
                   </p>
                 </div>
@@ -142,9 +141,10 @@ export function ProcessSection() {
                   </div>
                 </div>
               </div>
+            </FadeInStaggerItem>
             );
           })}
-        </div>
+        </FadeInStagger>
       </div>
     </section>
   );

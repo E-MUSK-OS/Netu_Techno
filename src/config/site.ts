@@ -13,9 +13,10 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://netutechno.com",
   ogImage: "/images/netu-techno-clean.png",
   contact: {
-    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@netutechno.com",
-    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || "+91 79 4000 1234",
-    address: "Netu Techno Innovation Hub, S.G. Highway, Ahmedabad, Gujarat 380054, India",
+    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@netutechno.com",
+    careersEmail: process.env.NEXT_PUBLIC_CAREERS_EMAIL || "careers@netutechno.com",
+    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || "+91 82007 05348",
+    address: "83, Sardar Nagar Soc., Amroli Kosad Road, Gujarat Housing Board, Surat, Gujarat 394107, India",
     workingHours: "Monday – Friday: 9:00 AM – 6:30 PM IST (Global Coverage Available)",
     linkedin: "https://linkedin.com/company/netu-techno",
     github: "https://github.com/netu-techno",
@@ -33,6 +34,7 @@ export const siteConfig = {
     { title: "Home", href: "/" },
     { title: "Services", href: "/services" },
     { title: "About Us", href: "/about" },
+    { title: "Careers", href: "/careers" },
     { title: "Contact Us", href: "/contact" },
   ] satisfies NavItem[],
   ctas: {

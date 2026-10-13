@@ -2,6 +2,7 @@ import { z } from "zod";
 
 export const SERVICE_OPTIONS = [
   "Custom Software Development",
+  "Custom & WordPress Web Development",
   "SaaS Product Engineering",
   "API and System Integration",
   "E-commerce Technology",

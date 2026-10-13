@@ -130,7 +130,7 @@ export async function POST(req: NextRequest) {
         {
           success: false,
           error:
-            "Unable to deliver your enquiry right now due to a temporary service outage. Please email us directly at contact@netutechno.com.",
+            "Unable to deliver your enquiry right now due to a temporary service outage. Please email us directly at info@netutechno.com.",
         },
         { status: 503 }
       );

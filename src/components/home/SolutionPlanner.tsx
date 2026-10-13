@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import {
   Code2,
@@ -114,14 +115,16 @@ export function SolutionPlanner() {
               const Icon = p.icon;
               const isSelected = p.id === selectedPlanId;
               return (
-                <button
+                <motion.button
                   key={p.id}
                   type="button"
+                  whileHover={{ y: -3 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => setSelectedPlanId(p.id)}
                   className={`p-5 rounded-2xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between ${
                     isSelected
                       ? "bg-[#181F28] border-slate-800 text-white shadow-lg -translate-y-1"
-                      : "bg-[#FAF6EC] border-[#DFD9CD] text-slate-800 hover:border-[#C59B27]/60 hover:bg-white"
+                      : "bg-[#FAF6EC] border-[#DFD9CD] text-[#273138] hover:border-[#C59B27]/60 hover:bg-white"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-3">
@@ -129,7 +132,7 @@ export function SolutionPlanner() {
                       className={`w-10 h-10 rounded-xl flex items-center justify-center ${
                         isSelected
                           ? "bg-[#C59B27] text-white"
-                          : "bg-white text-slate-800 border border-[#DFD9CD]"
+                          : "bg-white text-[#273138] border border-[#DFD9CD]"
                       }`}
                     >
                       <Icon className="w-5 h-5" />
@@ -141,37 +144,45 @@ export function SolutionPlanner() {
                   <div>
                     <h4
                       className={`text-base font-bold tracking-tight ${
-                        isSelected ? "text-white" : "text-slate-900"
+                        isSelected ? "text-white" : "text-[#273138]"
                       }`}
                     >
                       {p.title}
                     </h4>
                     <p
-                      className={`text-xs mt-1 leading-snug ${
+                      className={`text-sm mt-1 leading-snug ${
                         isSelected ? "text-slate-300" : "text-slate-600"
                       }`}
                     >
                       {p.tagline}
                     </p>
                   </div>
-                </button>
+                </motion.button>
               );
             })}
           </div>
 
-          {/* Active Blueprint Scope Specification Panel */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#DFD9CD] shadow-sm">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Active Blueprint Scope Specification Panel with Animated Transition */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentPlan.id}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="p-6 sm:p-8 rounded-2xl bg-white border border-[#DFD9CD] shadow-sm"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left Column: Scope Details */}
               <div className="lg:col-span-7 space-y-6">
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <Sparkles className="w-4 h-4 text-[#C59B27]" />
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6D15]">
+                    <span className="text-sm font-mono font-bold uppercase tracking-wider text-[#8C6D15]">
                       ENGINEERED SCOPE SPECIFICATION
                     </span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-[#273138] tracking-tight">
                     {currentPlan.title}
                   </h3>
                   <p className="text-sm text-slate-600 mt-2 leading-relaxed">
@@ -182,21 +193,21 @@ export function SolutionPlanner() {
                 {/* Topology & Sprint Info */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="p-4 rounded-xl bg-[#FAF6EC] border border-[#E8DDBF]">
-                    <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#8C6D15] uppercase tracking-wider mb-1">
+                    <div className="flex items-center gap-1.5 text-sm font-mono font-bold text-[#8C6D15] uppercase tracking-wider mb-1">
                       <Cpu className="w-3.5 h-3.5" />
                       <span>Recommended Architecture:</span>
                     </div>
-                    <div className="text-xs font-semibold text-slate-800">
+                    <div className="text-sm font-semibold text-[#273138]">
                       {currentPlan.topology}
                     </div>
                   </div>
 
                   <div className="p-4 rounded-xl bg-[#FAF6EC] border border-[#E8DDBF]">
-                    <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#8C6D15] uppercase tracking-wider mb-1">
+                    <div className="flex items-center gap-1.5 text-sm font-mono font-bold text-[#8C6D15] uppercase tracking-wider mb-1">
                       <Clock className="w-3.5 h-3.5" />
                       <span>Delivery Timeline:</span>
                     </div>
-                    <div className="text-xs font-semibold text-slate-800">
+                    <div className="text-sm font-semibold text-[#273138]">
                       {currentPlan.sprintWeeks} in structured 2-week sprints
                     </div>
                   </div>
@@ -204,12 +215,12 @@ export function SolutionPlanner() {
 
                 {/* Key Deliverables Checkmarks */}
                 <div>
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 block mb-3">
+                  <span className="text-sm font-mono font-bold uppercase tracking-wider text-slate-500 block mb-3">
                     Verified Deliverables Included:
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {currentPlan.keyDeliverables.map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
+                      <div key={idx} className="flex items-start gap-2 text-sm text-slate-700">
                         <CheckCircle2 className="w-4 h-4 text-[#C59B27] shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </div>
@@ -228,7 +239,7 @@ export function SolutionPlanner() {
                     <h4 className="text-lg font-bold text-white tracking-tight">
                       Ready For Engineering Kickoff
                     </h4>
-                    <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+                    <p className="text-sm text-slate-300 mt-2 leading-relaxed">
                       All solutions come with complete Git repository access, automated CI/CD pipeline, and comprehensive architecture handover.
                     </p>
                   </div>
@@ -239,7 +250,7 @@ export function SolutionPlanner() {
                       {currentPlan.recommendedTech.map((t) => (
                         <span
                           key={t}
-                          className="px-2.5 py-1 rounded bg-[#2A3442] border border-slate-700 text-xs font-mono text-[#FAF3DF]"
+                          className="px-2.5 py-1 rounded bg-[#2A3442] border border-slate-700 text-sm font-mono text-[#FAF3DF]"
                         >
                           {t}
                         </span>
@@ -250,7 +261,7 @@ export function SolutionPlanner() {
                   <div className="pt-4 border-t border-slate-800">
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center w-full px-5 py-3 rounded-xl bg-[#C59B27] hover:bg-[#AF851A] text-white text-xs font-bold shadow-md transition-colors gap-2"
+                      className="inline-flex items-center justify-center w-full px-5 py-3 rounded-xl bg-[#C59B27] hover:bg-[#AF851A] text-white text-sm font-bold shadow-md transition-colors gap-2"
                     >
                       <span>Request Scope Proposal</span>
                       <ArrowRight className="w-4 h-4" />
@@ -259,7 +270,8 @@ export function SolutionPlanner() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>

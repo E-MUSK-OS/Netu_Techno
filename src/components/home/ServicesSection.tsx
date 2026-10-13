@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { servicesData, ServiceItem } from "@/config/services";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { FadeIn, FadeInStagger, FadeInStaggerItem } from "@/components/shared/Motion";
 import {
   Code2,
   Layers,
@@ -9,6 +10,7 @@ import {
   ShoppingCart,
   Cpu,
   Cloud,
+  Globe,
   ArrowRight,
 } from "lucide-react";
 
@@ -19,6 +21,7 @@ const iconMap = {
   ShoppingCart,
   Cpu,
   Cloud,
+  Globe,
 };
 
 export function ServicesSection() {
@@ -26,6 +29,14 @@ export function ServicesSection() {
     "custom-software-development": [
       "Modular Domain-Driven Design",
       "Production-Grade Automated Testing",
+    ],
+    "custom-wordpress-development": [
+      "Custom Themes & Native Gutenberg Blocks",
+      "Sub-Second Speed & Hardened Security",
+    ],
+    "custom-wordpress": [
+      "Custom Themes & Native Gutenberg Blocks",
+      "Sub-Second Speed & Hardened Security",
     ],
     "business-process-automation": [
       "Zero Data-Loss Retry Handlers",
@@ -58,19 +69,17 @@ export function ServicesSection() {
           description="We do not push one-size-fits-all frameworks. We engineer dependable solutions designed around your specific technical constraints and business goals."
         />
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <FadeInStagger className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {servicesData.map((service: ServiceItem, idx) => {
             const Icon = iconMap[service.iconName] || Code2;
-            const highlights = serviceHighlights[service.id] || [
+            const highlights = serviceHighlights[service.id] || serviceHighlights[service.slug] || [
               "Type-Safe Codebase Architecture",
               "Production Deployment Ready",
             ];
 
             return (
-              <div
-                key={service.id}
-                className="card-luxury rounded-3xl p-8 flex flex-col justify-between group relative overflow-hidden card-hairline-gold"
-              >
+              <FadeInStaggerItem key={service.id}>
+                <div className="card-luxury rounded-3xl p-8 flex flex-col justify-between group relative overflow-hidden card-hairline-gold h-full">
                 {/* Subtle top corner ambient glow */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#C59B27]/5 rounded-bl-full pointer-events-none group-hover:bg-[#C59B27]/10 transition-colors duration-300" />
 
@@ -88,7 +97,7 @@ export function ServicesSection() {
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-xl font-extrabold text-slate-900 mb-3 tracking-tight group-hover:text-[#9E7A18] transition-colors">
+                  <h3 className="text-xl font-extrabold text-[#273138] mb-3 tracking-tight group-hover:text-[#9E7A18] transition-colors">
                     {service.title}
                   </h3>
 
@@ -102,7 +111,7 @@ export function ServicesSection() {
                       Engineering Standards:
                     </span>
                     {highlights.map((h, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-slate-700">
+                      <div key={i} className="flex items-center gap-2 text-sm text-slate-700">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27]" />
                         <span>{h}</span>
                       </div>
@@ -118,7 +127,7 @@ export function ServicesSection() {
                       {service.technologies.slice(0, 4).map((tech) => (
                         <span
                           key={tech}
-                          className="text-[11px] font-mono font-medium text-slate-800 bg-white border border-[#DFD9CD] px-2.5 py-0.5 rounded-md shadow-2xs"
+                          className="text-[11px] font-mono font-medium text-[#273138] bg-white border border-[#DFD9CD] px-2.5 py-0.5 rounded-md shadow-2xs"
                         >
                           {tech}
                         </span>
@@ -131,38 +140,41 @@ export function ServicesSection() {
                 <div className="pt-4 border-t border-[#DFD9CD]/80">
                   <Link
                     href={`/services#${service.slug}`}
-                    className="inline-flex items-center justify-between w-full px-4 py-3 rounded-xl bg-white/90 border border-[#DFD9CD] text-xs font-bold text-slate-900 hover:bg-[#181F28] hover:text-[#E5C365] hover:border-slate-800 transition-all duration-200 shadow-2xs group/btn"
+                    className="inline-flex items-center justify-between w-full px-4 py-3 rounded-xl bg-white/90 border border-[#DFD9CD] text-sm font-bold text-[#273138] hover:bg-[#181F28] hover:text-[#E5C365] hover:border-slate-800 transition-all duration-200 shadow-2xs group/btn"
                   >
                     <span>View Technical Scope</span>
                     <ArrowRight className="w-4 h-4 ml-1.5 text-[#C59B27] group-hover/btn:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>
+            </FadeInStaggerItem>
             );
           })}
-        </div>
+        </FadeInStagger>
 
         {/* Enterprise Technical Advisory Banner */}
-        <div className="mt-14 card-luxury rounded-3xl p-8 sm:p-10 border border-[#DFD9CD] flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden card-hairline-gold">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-[#FAF4E4] text-[#8C6D15] border border-[#E8D7A5]">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Custom Software Architecture Advisory</span>
+        <FadeIn delay={0.2} direction="up" className="mt-14">
+          <div className="card-luxury rounded-3xl p-8 sm:p-10 border border-[#DFD9CD] flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden card-hairline-gold">
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold bg-[#FAF4E4] text-[#8C6D15] border border-[#E8D7A5]">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Custom Software Architecture Advisory</span>
+              </div>
+              <h4 className="text-xl sm:text-2xl font-bold text-[#273138] tracking-tight">
+                Need a specialized or hybrid technical stack?
+              </h4>
+              <p className="text-sm text-slate-600 max-w-2xl leading-relaxed">
+                We frequently handle multi-system integrations, data transformations, and custom cloud pipelines. Discuss your operational requirements with our lead engineers.
+              </p>
             </div>
-            <h4 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-              Need a specialized or hybrid technical stack?
-            </h4>
-            <p className="text-sm text-slate-600 max-w-2xl leading-relaxed">
-              We frequently handle multi-system integrations, data transformations, and custom cloud pipelines. Discuss your operational requirements with our lead engineers.
-            </p>
+            <Link
+              href="/contact"
+              className="shrink-0 px-7 py-3.5 rounded-xl bg-[#181F28] hover:bg-[#C59B27] text-white hover:text-white text-sm font-bold shadow-md hover:shadow-lg transition-all duration-200"
+            >
+              Consult Engineering Team →
+            </Link>
           </div>
-          <Link
-            href="/contact"
-            className="shrink-0 px-7 py-3.5 rounded-xl bg-[#181F28] hover:bg-[#C59B27] text-white hover:text-white text-sm font-bold shadow-md hover:shadow-lg transition-all duration-200"
-          >
-            Consult Engineering Team →
-          </Link>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

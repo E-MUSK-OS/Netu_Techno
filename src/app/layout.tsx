@@ -1,14 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { ScrollProgress } from "@/components/shared/Motion";
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-poppins",
 });
 
 export const viewport: Viewport = {
@@ -95,7 +97,7 @@ export default function RootLayout({
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${poppins.variable} h-full antialiased`}>
       <head>
         <script
           type="application/ld+json"
@@ -120,7 +122,8 @@ export default function RootLayout({
           </>
         )}
       </head>
-      <body className="min-h-full flex flex-col font-sans bg-[#EFEBE1] text-[#181F28] selection:bg-amber-100 selection:text-amber-950">
+      <body className="min-h-full flex flex-col font-sans bg-[#EFEBE1] text-[#273138] selection:bg-amber-100 selection:text-amber-950">
+        <ScrollProgress />
         {/* Accessible skip link */}
         <a
           href="#main-content"

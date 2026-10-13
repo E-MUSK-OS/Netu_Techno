@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/shared/Button";
+import { FadeIn } from "@/components/shared/Motion";
 import { ArrowRight, ShieldCheck, Cpu, Terminal } from "lucide-react";
 
 interface CTASectionProps {
@@ -28,8 +29,9 @@ export function CTASection({
       />
 
       <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Subtle badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#C59B27]/15 text-[#E5C365] border border-[#C59B27]/30">
+        <FadeIn direction="up">
+          {/* Subtle badge */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-sm font-semibold uppercase tracking-wider bg-[#C59B27]/15 text-[#E5C365] border border-[#C59B27]/30">
           <Terminal className="w-3.5 h-3.5" />
           <span>Direct Engineering Consultation</span>
         </div>
@@ -65,7 +67,7 @@ export function CTASection({
         </div>
 
         {/* Trust markers */}
-        <div className="mt-12 pt-8 border-t border-slate-800/80 flex flex-wrap items-center justify-center gap-8 text-xs text-slate-400">
+        <div className="mt-12 pt-8 border-t border-slate-800/80 flex flex-wrap items-center justify-center gap-8 text-sm text-slate-400">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-emerald-400" />
             <span>Strict NDA & Code Confidentiality</span>
@@ -79,6 +81,7 @@ export function CTASection({
             <span>Response within 1 Business Day</span>
           </div>
         </div>
+        </FadeIn>
       </div>
     </section>
   );

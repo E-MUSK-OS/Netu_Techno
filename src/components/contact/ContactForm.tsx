@@ -77,7 +77,7 @@ export function ContactForm() {
       setSubmissionState({
         status: "error",
         message:
-          "Network communication failure. Please check your internet connection or email us directly at contact@netutechno.com.",
+          "Network communication failure. Please check your internet connection or email us directly at info@netutechno.com.",
       });
     }
   };
@@ -86,7 +86,7 @@ export function ContactForm() {
     <div className="w-full card-luxury card-hairline-gold rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden">
       {/* Header Info */}
       <div className="mb-8">
-        <h3 className="text-2xl font-bold text-slate-900 tracking-tight">
+        <h3 className="text-2xl font-bold text-[#273138] tracking-tight">
           Project Requirements Form
         </h3>
         <p className="mt-2 text-sm text-slate-600">
@@ -109,7 +109,7 @@ export function ContactForm() {
             <button
               type="button"
               onClick={() => setSubmissionState({ status: "idle" })}
-              className="mt-3 text-xs font-semibold text-emerald-900 hover:underline"
+              className="mt-3 text-sm font-semibold text-emerald-900 hover:underline"
             >
               Submit another inquiry
             </button>
@@ -151,7 +151,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="fullName"
-              className="block text-xs font-semibold text-slate-800 uppercase tracking-wider mb-2"
+              className="block text-sm font-semibold text-[#273138] uppercase tracking-wider mb-2"
             >
               Full Name <span className="text-rose-500">*</span>
             </label>
@@ -171,7 +171,7 @@ export function ContactForm() {
               aria-describedby={errors.fullName ? "fullName-error" : undefined}
             />
             {errors.fullName && (
-              <p id="fullName-error" className="mt-1.5 text-xs text-rose-600 font-medium">
+              <p id="fullName-error" className="mt-1.5 text-sm text-rose-600 font-medium">
                 {errors.fullName.message}
               </p>
             )}
@@ -180,7 +180,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="workEmail"
-              className="block text-xs font-semibold text-slate-800 uppercase tracking-wider mb-2"
+              className="block text-sm font-semibold text-[#273138] uppercase tracking-wider mb-2"
             >
               Work Email <span className="text-rose-500">*</span>
             </label>
@@ -200,7 +200,7 @@ export function ContactForm() {
               aria-describedby={errors.workEmail ? "workEmail-error" : undefined}
             />
             {errors.workEmail && (
-              <p id="workEmail-error" className="mt-1.5 text-xs text-rose-600 font-medium">
+              <p id="workEmail-error" className="mt-1.5 text-sm text-rose-600 font-medium">
                 {errors.workEmail.message}
               </p>
             )}
@@ -212,7 +212,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="companyName"
-              className="block text-xs font-semibold text-slate-800 uppercase tracking-wider mb-2"
+              className="block text-sm font-semibold text-[#273138] uppercase tracking-wider mb-2"
             >
               Company Name <span className="text-slate-400 font-normal lowercase">(optional)</span>
             </label>
@@ -226,7 +226,7 @@ export function ContactForm() {
               {...register("companyName")}
             />
             {errors.companyName && (
-              <p className="mt-1.5 text-xs text-rose-600 font-medium">
+              <p className="mt-1.5 text-sm text-rose-600 font-medium">
                 {errors.companyName.message}
               </p>
             )}
@@ -235,7 +235,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="phone"
-              className="block text-xs font-semibold text-slate-800 uppercase tracking-wider mb-2"
+              className="block text-sm font-semibold text-[#273138] uppercase tracking-wider mb-2"
             >
               Phone Number <span className="text-slate-400 font-normal lowercase">(optional)</span>
             </label>
@@ -253,7 +253,7 @@ export function ContactForm() {
               {...register("phone")}
             />
             {errors.phone && (
-              <p className="mt-1.5 text-xs text-rose-600 font-medium">
+              <p className="mt-1.5 text-sm text-rose-600 font-medium">
                 {errors.phone.message}
               </p>
             )}
@@ -264,7 +264,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="service"
-            className="block text-xs font-semibold text-slate-800 uppercase tracking-wider mb-2"
+            className="block text-sm font-semibold text-[#273138] uppercase tracking-wider mb-2"
           >
             Service Required <span className="text-rose-500">*</span>
           </label>
@@ -291,7 +291,7 @@ export function ContactForm() {
             ))}
           </select>
           {errors.service && (
-            <p id="service-error" className="mt-1.5 text-xs text-rose-600 font-medium">
+            <p id="service-error" className="mt-1.5 text-sm text-rose-600 font-medium">
               {errors.service.message}
             </p>
           )}
@@ -302,7 +302,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="budget"
-              className="block text-xs font-semibold text-slate-800 uppercase tracking-wider mb-2"
+              className="block text-sm font-semibold text-[#273138] uppercase tracking-wider mb-2"
             >
               Estimated Budget <span className="text-slate-400 font-normal lowercase">(optional)</span>
             </label>
@@ -325,7 +325,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="timeline"
-              className="block text-xs font-semibold text-slate-800 uppercase tracking-wider mb-2"
+              className="block text-sm font-semibold text-[#273138] uppercase tracking-wider mb-2"
             >
               Desired Timeline <span className="text-slate-400 font-normal lowercase">(optional)</span>
             </label>
@@ -350,7 +350,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="projectDescription"
-            className="block text-xs font-semibold text-slate-800 uppercase tracking-wider mb-2"
+            className="block text-sm font-semibold text-[#273138] uppercase tracking-wider mb-2"
           >
             Project Description & Operational Challenge <span className="text-rose-500">*</span>
           </label>
@@ -371,7 +371,7 @@ export function ContactForm() {
             }
           />
           {errors.projectDescription && (
-            <p id="projectDescription-error" className="mt-1.5 text-xs text-rose-600 font-medium">
+            <p id="projectDescription-error" className="mt-1.5 text-sm text-rose-600 font-medium">
               {errors.projectDescription.message}
             </p>
           )}
@@ -379,7 +379,7 @@ export function ContactForm() {
 
         {/* Submit Actions */}
         <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-xs text-slate-500">
+          <div className="flex items-center gap-2 text-sm text-slate-500">
             <Lock className="w-3.5 h-3.5 text-slate-400" />
             <span>Strict privacy. We never share your data.</span>
           </div>

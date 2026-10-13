@@ -1,5 +1,6 @@
 import React from "react";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { FadeInStagger, FadeInStaggerItem } from "@/components/shared/Motion";
 import { Target, Layers, Network, MessageSquareCode } from "lucide-react";
 
 export function WhyUsSection() {
@@ -55,16 +56,14 @@ export function WhyUsSection() {
           description="We evaluate software through an engineering lens grounded in business practicality. Here is how our approach protects your timeline, budget, and operational sanity."
         />
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-8">
+        <FadeInStagger className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-8">
           {differentiators.map((item) => {
             const Icon = item.icon;
             return (
-              <div
-                key={item.title}
-                className="card-luxury rounded-3xl p-8 lg:p-9 flex flex-col justify-between group relative overflow-hidden card-hairline-gold"
-              >
-                {/* Subtle top corner ambient glow */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#C59B27]/5 rounded-bl-full pointer-events-none group-hover:bg-[#C59B27]/10 transition-colors duration-300" />
+              <FadeInStaggerItem key={item.title}>
+                <div className="card-luxury rounded-3xl p-8 lg:p-9 flex flex-col justify-between group relative overflow-hidden card-hairline-gold h-full">
+                  {/* Subtle top corner ambient glow */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#C59B27]/5 rounded-bl-full pointer-events-none group-hover:bg-[#C59B27]/10 transition-colors duration-300" />
 
                 <div>
                   {/* Card Header Row */}
@@ -81,10 +80,10 @@ export function WhyUsSection() {
 
                   {/* Title & Subtitle */}
                   <div className="mb-4">
-                    <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight group-hover:text-[#9E7A18] transition-colors mb-1">
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-[#273138] tracking-tight group-hover:text-[#9E7A18] transition-colors mb-1">
                       {item.title}
                     </h3>
-                    <div className="text-xs font-semibold text-[#8C6D15] uppercase tracking-wider">
+                    <div className="text-sm font-semibold text-[#8C6D15] uppercase tracking-wider">
                       {item.subtitle}
                     </div>
                   </div>
@@ -97,7 +96,7 @@ export function WhyUsSection() {
 
                 {/* Practical Engineering Pledge Box */}
                 <div className="pt-4 border-t border-[#DFD9CD]/80">
-                  <div className="p-3.5 rounded-2xl bg-[#FAF6EC] border border-[#E8DDBF] text-xs text-slate-800 flex items-start gap-2.5">
+                  <div className="p-3.5 rounded-2xl bg-[#FAF6EC] border border-[#E8DDBF] text-sm text-[#273138] flex items-start gap-2.5">
                     <span className="w-2 h-2 rounded-full bg-[#C59B27] shrink-0 mt-1.5" />
                     <div>
                       <span className="font-bold text-[#8C6D15] block uppercase text-[10px] tracking-wider mb-0.5">
@@ -108,9 +107,10 @@ export function WhyUsSection() {
                   </div>
                 </div>
               </div>
+            </FadeInStaggerItem>
             );
           })}
-        </div>
+        </FadeInStagger>
       </div>
     </section>
   );

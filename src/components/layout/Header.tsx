@@ -103,8 +103,8 @@ export function Header() {
                   className={cn(
                     "px-4 py-2 rounded-lg text-sm transition-all duration-150 relative",
                     isActive
-                      ? "text-[#181F28] font-bold bg-[#E6E0D0]/80 shadow-2xs"
-                      : "text-slate-700 font-medium hover:text-[#181F28] hover:bg-[#EAE4D6]/60"
+                      ? "text-[#273138] font-bold bg-[#E6E0D0]/80 shadow-2xs"
+                      : "text-slate-700 font-medium hover:text-[#273138] hover:bg-[#EAE4D6]/60"
                   )}
                   aria-current={isActive ? "page" : undefined}
                 >
@@ -140,7 +140,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-lg text-slate-700 hover:bg-[#E5DFCF] hover:text-[#181F28] focus-visible:outline-2 focus-visible:outline-[#C59B27]"
+              className="p-2.5 rounded-lg text-slate-700 hover:bg-[#E5DFCF] hover:text-[#273138] focus-visible:outline-2 focus-visible:outline-[#C59B27]"
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? "Close menu" : "Open main menu"}
             >
@@ -172,8 +172,8 @@ export function Header() {
         )}
         id="mobile-navigation"
       >
-        <div className="mb-4 pb-3 border-b border-[#DFD9CD] flex items-center justify-between text-xs text-slate-600">
-          <span className="font-semibold uppercase tracking-wider text-slate-800">Navigation</span>
+        <div className="mb-4 pb-3 border-b border-[#DFD9CD] flex items-center justify-between text-sm text-slate-600">
+          <span className="font-semibold uppercase tracking-wider text-[#273138]">Navigation</span>
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-white/80 text-emerald-800 border border-[#DFD9CD]">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span>Engineering Guild Online</span>
@@ -195,8 +195,8 @@ export function Header() {
                 className={cn(
                   "px-4 py-3 rounded-lg text-base font-medium flex items-center justify-between transition-colors",
                   isActive
-                    ? "bg-[#E6E0D0] text-[#181F28] font-bold border border-[#D5CDBD]"
-                    : "text-slate-700 hover:bg-[#EAE4D6]/70 hover:text-slate-950"
+                    ? "bg-[#E6E0D0] text-[#273138] font-bold border border-[#D5CDBD]"
+                    : "text-slate-700 hover:bg-[#EAE4D6]/70 hover:text-[#273138]"
                 )}
                 aria-current={isActive ? "page" : undefined}
               >
@@ -223,7 +223,7 @@ export function Header() {
           >
             {siteConfig.ctas.primary.text}
           </Button>
-          <p className="text-center text-xs text-slate-600 pt-1">
+          <p className="text-center text-sm text-slate-600 pt-1">
             Direct Architecture Advisory:{" "}
             <a
               href={`mailto:${siteConfig.contact.email}`}

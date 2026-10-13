@@ -20,20 +20,20 @@ export function Footer() {
         {/* Pre-footer Status & Direct Contact Banner */}
         <div className="mb-14 p-6 sm:p-8 rounded-3xl bg-[#141B24] border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl relative overflow-hidden card-hairline-gold">
           <div className="space-y-1.5 text-left">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#E5C365]">
+            <div className="flex items-center gap-2 text-sm font-mono text-[#E5C365]">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="uppercase tracking-wider">Enterprise Architecture Scoping 24/7</span>
             </div>
             <h4 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               Ready to eliminate your operational software bottlenecks?
             </h4>
-            <p className="text-xs text-slate-400 max-w-xl leading-relaxed">
+            <p className="text-sm text-slate-400 max-w-xl leading-relaxed">
               Direct technical feasibility scoping with senior software engineers. Bilateral NDA executed prior to reviewing proprietary workflows.
             </p>
           </div>
           <Link
             href="/contact"
-            className="shrink-0 px-6 py-3 rounded-xl bg-[#C59B27] hover:bg-[#AF851A] text-white text-xs font-bold shadow-md transition-colors font-mono tracking-wide"
+            className="shrink-0 px-6 py-3 rounded-xl bg-[#C59B27] hover:bg-[#AF851A] text-white text-sm font-bold shadow-md transition-colors font-mono tracking-wide"
           >
             Schedule Architecture Scoping →
           </Link>
@@ -54,7 +54,7 @@ export function Footer() {
               Engineering purpose-built software, business automation pipelines, and resilient API integrations designed specifically around your operational goals.
             </p>
 
-            <div className="pt-2 text-xs text-slate-500">
+            <div className="pt-2 text-sm text-slate-500">
               <span className="inline-block px-3 py-1.5 rounded-md bg-[#18202A] border border-slate-800 text-[#E5C365] font-semibold">
                 Verified B2B Engineering Guild
               </span>
@@ -95,7 +95,7 @@ export function Footer() {
               Capabilities
             </h3>
             <ul className="space-y-2.5 text-sm">
-              {servicesData.slice(0, 5).map((service) => (
+              {servicesData.slice(0, 7).map((service) => (
                 <li key={service.id}>
                   <Link
                     href={`/services#${service.slug}`}
@@ -108,7 +108,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/services"
-                  className="text-slate-400 hover:text-white text-xs underline underline-offset-4"
+                  className="text-slate-400 hover:text-white text-sm underline underline-offset-4"
                 >
                   View all services →
                 </Link>
@@ -121,7 +121,7 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-white uppercase tracking-wider">
               Direct Contact
             </h3>
-            <ul className="space-y-3 text-xs text-slate-400">
+            <ul className="space-y-3 text-sm text-slate-400">
               <li className="flex items-start gap-2.5">
                 <Mail className="w-4 h-4 text-[#C59B27] shrink-0 mt-0.5" />
                 <div>
@@ -160,7 +160,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
           <p>
             © {currentYear} {siteConfig.name}. All rights reserved. Built with clean, reliable software engineering.
           </p>

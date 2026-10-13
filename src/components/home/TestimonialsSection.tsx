@@ -1,5 +1,6 @@
 import React from "react";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { FadeInStagger, FadeInStaggerItem } from "@/components/shared/Motion";
 import { Star, CheckCircle2, Quote, Building2, ShieldCheck } from "lucide-react";
 
 export function TestimonialsSection() {
@@ -45,15 +46,13 @@ export function TestimonialsSection() {
           description="We measure success by reduced operational overhead, zero-downtime reliability, and systems that solve real business problems without unnecessary complexity."
         />
 
-        <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <FadeInStagger className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
           {testimonials.map((item, idx) => {
             return (
-              <div
-                key={item.id}
-                className="card-luxury rounded-3xl p-8 flex flex-col justify-between group relative overflow-hidden card-hairline-gold"
-              >
-                {/* Subtle top corner ambient glow */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#C59B27]/5 rounded-bl-full pointer-events-none group-hover:bg-[#C59B27]/10 transition-colors duration-300" />
+              <FadeInStaggerItem key={item.id}>
+                <div className="card-luxury rounded-3xl p-8 flex flex-col justify-between group relative overflow-hidden card-hairline-gold h-full">
+                  {/* Subtle top corner ambient glow */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#C59B27]/5 rounded-bl-full pointer-events-none group-hover:bg-[#C59B27]/10 transition-colors duration-300" />
 
                 <div>
                   {/* Top Bar: 5 Stars + Verification Pill */}
@@ -69,7 +68,7 @@ export function TestimonialsSection() {
                   </div>
 
                   {/* Measured Outcome Banner */}
-                  <div className="mb-6 p-3 rounded-xl bg-[#FAF6EC] border border-[#E8DDBF] flex items-center gap-2 text-xs font-semibold text-slate-800">
+                  <div className="mb-6 p-3 rounded-xl bg-[#FAF6EC] border border-[#E8DDBF] flex items-center gap-2 text-sm font-semibold text-[#273138]">
                     <CheckCircle2 className="w-4 h-4 text-[#C59B27] shrink-0" />
                     <span>{item.outcome}</span>
                   </div>
@@ -87,10 +86,10 @@ export function TestimonialsSection() {
                 <div className="pt-5 border-t border-[#DFD9CD] space-y-1">
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="text-sm font-bold text-slate-900">
+                      <div className="text-sm font-bold text-[#273138]">
                         {item.clientRole}
                       </div>
-                      <div className="text-xs text-slate-500">
+                      <div className="text-sm text-slate-500">
                         {item.companyType}
                       </div>
                     </div>
@@ -105,9 +104,10 @@ export function TestimonialsSection() {
                   </div>
                 </div>
               </div>
+            </FadeInStaggerItem>
             );
           })}
-        </div>
+        </FadeInStagger>
       </div>
     </section>
   );

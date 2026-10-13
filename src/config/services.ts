@@ -4,7 +4,7 @@ export interface ServiceItem {
   title: string;
   shortDescription: string;
   summary: string;
-  iconName: "Code2" | "Layers" | "Workflow" | "ShoppingCart" | "Cpu" | "Cloud";
+  iconName: "Code2" | "Layers" | "Workflow" | "ShoppingCart" | "Cpu" | "Cloud" | "Globe";
   whoNeedsThis: string;
   problemsSolved: string[];
   whatWeDeliver: string[];
@@ -47,6 +47,40 @@ export const servicesData: ServiceItem[] = [
       "High data integrity and team productivity across departments",
     ],
     technologies: ["TypeScript", "Next.js", "Node.js", "PostgreSQL", "Prisma", "Tailwind CSS"],
+    featured: true,
+  },
+  {
+    id: "custom-wordpress",
+    slug: "custom-wordpress-development",
+    title: "Custom & WordPress Web Development",
+    shortDescription:
+      "High-converting custom websites, bespoke WordPress themes & plugins, headless CMS architectures, and lightning-fast digital experiences.",
+    summary:
+      "We build bespoke custom websites and high-performance WordPress platforms engineered with clean code, intuitive admin controls, enterprise security, and sub-second page loads.",
+    iconName: "Globe",
+    whoNeedsThis:
+      "Businesses seeking professional, high-converting digital storefronts, marketing sites, or custom WordPress web solutions without generic bloated themes and security vulnerabilities.",
+    problemsSolved: [
+      "Slow, bloated WordPress templates with security vulnerabilities and plugin conflicts",
+      "Rigid page builders that break after updates and create vendor lock-in",
+      "Difficult content management workflows requiring technical assistance for simple edits",
+      "Poor mobile responsiveness, broken layouts, and weak Core Web Vitals SEO scores",
+    ],
+    whatWeDeliver: [
+      "Bespoke custom WordPress themes & native Gutenberg block architectures",
+      "Custom WordPress plugins built without third-party security vulnerabilities",
+      "Headless WordPress paired with Next.js/React frontends for maximum speed",
+      "Enterprise-grade speed optimization, caching layers, SEO architecture, and hardened security",
+    ],
+    technicalApproach:
+      "We avoid heavy, bloated pre-made themes and fragile visual builders that degrade site speed. Every custom website is engineered with semantic HTML, modern Tailwind CSS, clean PHP/TypeScript, and optimized asset delivery to achieve top Google PageSpeed and Core Web Vitals ratings.",
+    businessOutcomes: [
+      "Lightning-fast Core Web Vitals scores boosting organic Google SEO rankings",
+      "Effortless, intuitive content updates for your marketing and non-technical teams",
+      "Robust security hardening against malware and automated vulnerability exploits",
+      "Custom tailored visual design aligned 100% with your brand identity and conversion goals",
+    ],
+    technologies: ["WordPress", "Next.js", "PHP", "Tailwind CSS", "MySQL", "ACF Pro", "REST API / GraphQL"],
     featured: true,
   },
   {
