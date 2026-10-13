@@ -8,11 +8,16 @@ import { Button } from "@/components/shared/Button";
 import { NetuLogo } from "@/components/shared/NetuLogo";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { scrollToTop } from "@/components/shared/Motion";
 
 export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const handleNavClick = () => {
+    scrollToTop(true);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,25 +45,26 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full transition-all duration-200">
       {/* Top Enterprise Availability Status Ribbon */}
-      <div className="bg-[#10161E] text-slate-300 text-[11px] py-1.5 px-4 border-b border-slate-800">
-        <div className="max-w-screen-2xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="font-mono text-slate-200 font-semibold tracking-wide">
-              SYSTEM STATUS: ALL PLATFORMS OPERATIONAL
+      <div className="bg-[#10161E] text-slate-300 text-[10px] sm:text-[11px] py-1.5 px-3 sm:px-4 border-b border-slate-800">
+        <div className="max-w-screen-2xl mx-auto flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+            <span className="font-mono text-slate-200 font-semibold tracking-wide truncate">
+              <span className="hidden sm:inline">SYSTEM STATUS: </span>OPERATIONAL
             </span>
-            <span className="hidden sm:inline text-slate-600">•</span>
-            <span className="hidden sm:inline text-slate-400">Accepting Architecture Sprints</span>
+            <span className="hidden md:inline text-slate-600">•</span>
+            <span className="hidden md:inline text-slate-400">Accepting Architecture Sprints</span>
           </div>
-          <div className="flex items-center gap-4 text-slate-400">
-            <span className="hidden md:inline font-mono text-[10px] text-slate-400">
+          <div className="flex items-center gap-3 sm:gap-4 text-slate-400 shrink-0">
+            <span className="hidden lg:inline font-mono text-[10px] text-slate-400">
               GUARANTEED NDA • FULL IP OWNERSHIP
             </span>
             <Link
               href="/contact"
-              className="text-[#E5C365] hover:text-[#FAF3DF] font-semibold text-[11px] flex items-center gap-1 transition-colors"
+              onClick={handleNavClick}
+              className="text-[#E5C365] hover:text-[#FAF3DF] font-semibold text-[10px] sm:text-[11px] flex items-center gap-1 transition-colors whitespace-nowrap"
             >
-              <span>Consult Lead Architect</span>
+              <span>Consult Architect</span>
               <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
@@ -79,6 +85,7 @@ export function Header() {
           {/* Brand Logo */}
           <Link
             href="/"
+            onClick={handleNavClick}
             className="flex items-center group focus-visible:outline-2 focus-visible:outline-[#C59B27] rounded-lg p-1 transition-opacity hover:opacity-90"
             aria-label="Netu Techno — Back to Homepage"
           >
@@ -100,6 +107,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={handleNavClick}
                   className={cn(
                     "px-4 py-2 rounded-lg text-sm transition-all duration-150 relative",
                     isActive
@@ -126,6 +134,7 @@ export function Header() {
 
             <Button
               href={siteConfig.ctas.primary.href}
+              onClick={handleNavClick}
               variant="gold"
               size="sm"
               rightIcon={<ArrowRight className="w-4 h-4 ml-1" />}
@@ -158,8 +167,8 @@ export function Header() {
       {/* Mobile Drawer Overlay */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 top-20 bg-slate-950/40 backdrop-blur-xs z-40 md:hidden animate-in fade-in duration-200"
-          onClick={() => setMobileMenuOpen(false)}
+          className="fixed inset-0 bg-slate-950/50 backdrop-blur-xs z-40 md:hidden animate-in fade-in duration-200"
+          onClick={closeMobileMenu}
           aria-hidden="true"
         />
       )}
@@ -167,7 +176,7 @@ export function Header() {
       {/* Mobile Menu Panel */}
       <div
         className={cn(
-          "fixed top-20 right-0 left-0 bg-[#EFEBE1] border-b border-[#DFD9CD] p-6 z-40 shadow-xl md:hidden transition-all duration-200 ease-in-out",
+          "absolute top-full left-0 right-0 bg-[#EFEBE1] border-b border-[#DFD9CD] p-5 sm:p-6 z-40 shadow-2xl md:hidden transition-all duration-200 ease-in-out max-h-[calc(100dvh-100%)] overflow-y-auto overscroll-contain",
           mobileMenuOpen ? "block" : "hidden"
         )}
         id="mobile-navigation"
@@ -191,7 +200,10 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={closeMobileMenu}
+                onClick={() => {
+                  closeMobileMenu();
+                  handleNavClick();
+                }}
                 className={cn(
                   "px-4 py-3 rounded-lg text-base font-medium flex items-center justify-between transition-colors",
                   isActive
@@ -215,7 +227,10 @@ export function Header() {
         <div className="pt-6 mt-4 border-t border-[#DFD9CD] flex flex-col gap-3">
           <Button
             href={siteConfig.ctas.primary.href}
-            onClick={closeMobileMenu}
+            onClick={() => {
+              closeMobileMenu();
+              handleNavClick();
+            }}
             variant="gold"
             size="lg"
             className="w-full justify-center"

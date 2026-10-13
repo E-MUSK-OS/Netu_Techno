@@ -13,6 +13,26 @@ interface SectionHeadingProps {
   titleAs?: "h1" | "h2" | "h3";
 }
 
+function useMotionSafe() {
+  const [canAnimate, setCanAnimate] = React.useState(false);
+
+  React.useEffect(() => {
+    const update = () => {
+      const prefersReduced = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+      const isMobile = window.innerWidth < 768;
+      setCanAnimate(!prefersReduced && !isMobile);
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  return canAnimate;
+}
+
 export function SectionHeading({
   badge,
   title,
@@ -22,6 +42,39 @@ export function SectionHeading({
   titleAs = "h2",
 }: SectionHeadingProps) {
   const TitleTag = titleAs;
+  const canAnimate = useMotionSafe();
+
+  if (!canAnimate) {
+    return (
+      <div
+        className={cn(
+          "max-w-4xl",
+          align === "center" ? "mx-auto text-center" : "text-left",
+          className
+        )}
+      >
+        {badge && (
+          <div
+            className={cn(
+              "inline-flex items-center gap-2 px-4 py-1.5 mb-5 rounded-full text-sm font-mono font-bold tracking-wider uppercase",
+              "bg-white/95 text-[#8C6D15] border border-[#DFD9CD] shadow-2xs card-hairline-gold"
+            )}
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] animate-pulse" />
+            <span>{badge}</span>
+          </div>
+        )}
+        <TitleTag className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#273138] leading-[1.18] sm:leading-[1.14]">
+          {title}
+        </TitleTag>
+        {description && (
+          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal max-w-2xl mx-auto">
+            {description}
+          </p>
+        )}
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -50,7 +103,7 @@ export function SectionHeading({
           <span>{badge}</span>
         </motion.div>
       )}
-      <TitleTag className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#273138] leading-[1.14]">
+      <TitleTag className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#273138] leading-[1.18] sm:leading-[1.14]">
         {title}
       </TitleTag>
       {description && (

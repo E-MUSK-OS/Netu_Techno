@@ -6,9 +6,19 @@ import { sendContactNotification } from "@/lib/email/mailer";
 // In-memory rate limiting map: ip -> array of submission timestamps
 const rateLimitMap = new Map<string, number[]>();
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
-const MAX_REQUESTS_PER_WINDOW = 5;
+const MAX_REQUESTS_PER_WINDOW = 30;
 
 function isRateLimited(ip: string): boolean {
+  // Bypass rate limiting in development or for local testing so testing forms never gets blocked
+  if (
+    process.env.NODE_ENV === "development" ||
+    ip === "127.0.0.1" ||
+    ip === "::1" ||
+    ip === "localhost"
+  ) {
+    return false;
+  }
+
   const now = Date.now();
   const timestamps = rateLimitMap.get(ip) || [];
   const validTimestamps = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
@@ -79,10 +89,13 @@ export async function POST(req: NextRequest) {
     const sanitizedData = {
       fullName: data.fullName.replace(/[<>]/g, "").trim(),
       workEmail: data.workEmail.trim().toLowerCase(),
-      service: data.service,
+      service:
+        data.service === "Other" && data.otherService?.trim()
+          ? `Other: ${data.otherService.replace(/[<>]/g, "").trim()}`
+          : data.service,
       projectDescription: data.projectDescription.replace(/[<>]/g, "").trim(),
       companyName: data.companyName ? data.companyName.replace(/[<>]/g, "").trim() : undefined,
-      phone: data.phone ? data.phone.trim() : undefined,
+      phone: data.phone.replace(/\D/g, "").trim(),
       budget: data.budget || undefined,
       timeline: data.timeline || undefined,
     };
@@ -114,8 +127,6 @@ export async function POST(req: NextRequest) {
       projectDescription: sanitizedData.projectDescription,
       companyName: sanitizedData.companyName,
       phone: sanitizedData.phone,
-      budget: sanitizedData.budget,
-      timeline: sanitizedData.timeline,
       submittedAt: `${submittedAt} (UTC)`,
     });
 

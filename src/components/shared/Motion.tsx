@@ -5,7 +5,30 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 /**
- * Top scroll progress bar with Netu Techno luxury gold gradient
+ * Hook to disable scroll animations on mobile viewports (< 768px) and when reduced motion is preferred
+ */
+function useMotionSafe() {
+  const [canAnimate, setCanAnimate] = React.useState(false);
+
+  React.useEffect(() => {
+    const update = () => {
+      const prefersReduced = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+      const isMobile = window.innerWidth < 768;
+      setCanAnimate(!prefersReduced && !isMobile);
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  return canAnimate;
+}
+
+/**
+ * Top scroll progress bar with Netu Techno luxury gold gradient (Desktop only)
  */
 export function ScrollProgress({ className }: { className?: string }) {
   const { scrollYProgress } = useScroll();
@@ -19,7 +42,7 @@ export function ScrollProgress({ className }: { className?: string }) {
     <motion.div
       style={{ scaleX }}
       className={cn(
-        "fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#C59B27] via-[#E5C365] to-[#C59B27] origin-left z-50 pointer-events-none",
+        "hidden md:block fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#C59B27] via-[#E5C365] to-[#C59B27] origin-left z-50 pointer-events-none",
         className
       )}
     />
@@ -45,6 +68,12 @@ export function FadeIn({
   distance = 24,
   once = true,
 }: FadeInProps) {
+  const canAnimate = useMotionSafe();
+
+  if (!canAnimate) {
+    return <div className={className}>{children}</div>;
+  }
+
   const directions = {
     up: { y: distance, x: 0 },
     down: { y: -distance, x: 0 },
@@ -85,6 +114,12 @@ export function FadeInStagger({
   stagger = 0.1,
   delay = 0,
 }: FadeInStaggerProps) {
+  const canAnimate = useMotionSafe();
+
+  if (!canAnimate) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       initial="hidden"
@@ -115,6 +150,12 @@ export function FadeInStaggerItem({
   className?: string;
   y?: number;
 }) {
+  const canAnimate = useMotionSafe();
+
+  if (!canAnimate) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       variants={{
@@ -183,4 +224,6 @@ export function HoverCardMotion({
 }
 
 export { motion, AnimatePresence } from "framer-motion";
+export { ScrollDepthSection } from "./ScrollDepthSection";
+export { SmoothScrollProvider, scrollToTop } from "./SmoothScrollProvider";
 

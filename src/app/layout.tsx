@@ -4,7 +4,7 @@ import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { ScrollProgress } from "@/components/shared/Motion";
+import { ScrollProgress, SmoothScrollProvider } from "@/components/shared/Motion";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -123,20 +123,22 @@ export default function RootLayout({
         )}
       </head>
       <body className="min-h-full flex flex-col font-sans bg-[#EFEBE1] text-[#273138] selection:bg-amber-100 selection:text-amber-950">
-        <ScrollProgress />
-        {/* Accessible skip link */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#181F28] focus:text-[#E5C365] focus:rounded-md focus:shadow-lg focus:border focus:border-[#C59B27]"
-        >
-          Skip to main content
-        </a>
+        <SmoothScrollProvider>
+          <ScrollProgress />
+          {/* Accessible skip link */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#181F28] focus:text-[#E5C365] focus:rounded-md focus:shadow-lg focus:border focus:border-[#C59B27]"
+          >
+            Skip to main content
+          </a>
 
-        <Header />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+          <Header />
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

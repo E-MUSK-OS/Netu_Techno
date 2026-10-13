@@ -10,6 +10,7 @@ import { FeaturedProjects } from "@/components/home/FeaturedProjects";
 import { ProcessSection } from "@/components/home/ProcessSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { CTASection } from "@/components/shared/CTASection";
+import { ScrollDepthSection } from "@/components/shared/ScrollDepthSection";
 
 export const metadata: Metadata = {
   title: "Netu Techno — Software Solutions Built Around Your Business",
@@ -23,21 +24,50 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <Hero />
-      <ProblemSection />
-      <ServicesSection />
-      <SolutionPlanner />
-      <WhyUsSection />
-      <TechStackSection />
-      <FeaturedProjects />
-      <ProcessSection />
-      <TestimonialsSection />
-      <CTASection
-        headline="Have a Business Challenge in Mind?"
-        description="Tell us what you want to build, automate, integrate, or improve. Let's explore a practical technical solution designed around your operations."
-        primaryButtonText="Start a Project Discussion"
-        primaryButtonHref="/contact"
-      />
+      <ScrollDepthSection isFirst>
+        <Hero />
+      </ScrollDepthSection>
+
+      <ScrollDepthSection>
+        <ProblemSection />
+      </ScrollDepthSection>
+
+      <ScrollDepthSection>
+        <ServicesSection />
+      </ScrollDepthSection>
+
+      <ScrollDepthSection>
+        <SolutionPlanner />
+      </ScrollDepthSection>
+
+      <ScrollDepthSection>
+        <WhyUsSection />
+      </ScrollDepthSection>
+
+      <ScrollDepthSection>
+        <TechStackSection />
+      </ScrollDepthSection>
+
+      <ScrollDepthSection>
+        <FeaturedProjects />
+      </ScrollDepthSection>
+
+      <ScrollDepthSection>
+        <ProcessSection />
+      </ScrollDepthSection>
+
+      <ScrollDepthSection>
+        <TestimonialsSection />
+      </ScrollDepthSection>
+
+      <ScrollDepthSection isLast>
+        <CTASection
+          headline="Have a Business Challenge in Mind?"
+          description="Tell us what you want to build, automate, integrate, or improve. Let's explore a practical technical solution designed around your operations."
+          primaryButtonText="Start a Project Discussion"
+          primaryButtonHref="/contact"
+        />
+      </ScrollDepthSection>
     </>
   );
 }

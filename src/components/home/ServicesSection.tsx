@@ -60,6 +60,13 @@ export function ServicesSection() {
     ],
   };
 
+  // Exclude WordPress card from home page only (retains it on /services)
+  const homeServices = servicesData.filter(
+    (service) =>
+      service.id !== "custom-wordpress" &&
+      service.slug !== "custom-wordpress-development"
+  );
+
   return (
     <section className="py-20 lg:py-28 bg-[#EFEBE1] border-b border-[#DFD9CD]">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,7 +77,7 @@ export function ServicesSection() {
         />
 
         <FadeInStagger className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {servicesData.map((service: ServiceItem, idx) => {
+          {homeServices.map((service: ServiceItem, idx) => {
             const Icon = iconMap[service.iconName] || Code2;
             const highlights = serviceHighlights[service.id] || serviceHighlights[service.slug] || [
               "Type-Safe Codebase Architecture",

@@ -1,8 +1,9 @@
+
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { FadeIn } from "@/components/shared/Motion";
+import { FadeIn, ScrollDepthSection } from "@/components/shared/Motion";
 import {
   Mail,
   Phone,
@@ -45,19 +46,22 @@ export default function ContactPage() {
       />
 
       {/* Header Banner */}
-      <section className="bg-gradient-to-b from-[#EFEBE1] via-[#F4F1E8] to-[#EFEBE1] pt-16 pb-16 border-b border-[#DFD9CD]">
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            badge="Direct Engineering Inquiries"
-            title="Tell Us What You Need to Solve"
-            description="Share your project requirements or business challenge. We'll review the information and determine the appropriate next step."
-            titleAs="h1"
-          />
-        </div>
-      </section>
+      <ScrollDepthSection isFirst>
+        <section className="bg-gradient-to-b from-[#EFEBE1] via-[#F4F1E8] to-[#EFEBE1] pt-16 pb-16 border-b border-[#DFD9CD]">
+          <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <SectionHeading
+              badge="Direct Engineering Inquiries"
+              title="Tell Us What You Need to Solve"
+              description="Share your project requirements or business challenge. We'll review the information and determine the appropriate next step."
+              titleAs="h1"
+            />
+          </div>
+        </section>
+      </ScrollDepthSection>
 
       {/* Form & Information Grid */}
-      <section className="py-16 lg:py-24 bg-[#EFEBE1]">
+      <ScrollDepthSection isLast>
+        <section className="py-16 lg:py-24 bg-[#EFEBE1]">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Column: Contact Form */}
@@ -189,6 +193,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      </ScrollDepthSection>
     </>
   );
 }

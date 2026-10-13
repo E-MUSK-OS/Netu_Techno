@@ -3,7 +3,7 @@ import { servicesData, ServiceItem } from "@/config/services";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Button } from "@/components/shared/Button";
 import { CTASection } from "@/components/shared/CTASection";
-import { FadeIn } from "@/components/shared/Motion";
+import { FadeIn, ScrollDepthSection } from "@/components/shared/Motion";
 import {
   Code2,
   Layers,
@@ -62,29 +62,31 @@ export default function ServicesPage() {
       />
 
       {/* Services Header Banner */}
-      <section className="bg-gradient-to-b from-[#EFEBE1] via-[#F4F1E8] to-[#EFEBE1] pt-16 pb-20 border-b border-[#DFD9CD]">
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            badge="Engineering Capabilities"
-            title="Software Services Designed to Solve Real Business Problems"
-            description="Explore practical software solutions that help businesses improve workflows, connect systems, and develop scalable digital products."
-            titleAs="h1"
-          />
+      <ScrollDepthSection isFirst>
+        <section className="bg-gradient-to-b from-[#EFEBE1] via-[#F4F1E8] to-[#EFEBE1] pt-16 pb-20 border-b border-[#DFD9CD]">
+          <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <SectionHeading
+              badge="Engineering Capabilities"
+              title="Software Services Designed to Solve Real Business Problems"
+              description="Explore practical software solutions that help businesses improve workflows, connect systems, and develop scalable digital products."
+              titleAs="h1"
+            />
 
-          {/* Jump Navigation Pills */}
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-2.5">
-            {servicesData.map((service) => (
-              <a
-                key={service.id}
-                href={`#${service.slug}`}
-                className="px-4 py-2 rounded-full text-sm font-semibold bg-white/90 text-[#273138] border border-[#DFD9CD] shadow-2xs hover:bg-[#181F28] hover:text-[#E5C365] hover:border-slate-800 transition-all duration-200"
-              >
-                {service.title}
-              </a>
-            ))}
+            {/* Jump Navigation Pills */}
+            <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+              {servicesData.map((service) => (
+                <a
+                  key={service.id}
+                  href={`#${service.slug}`}
+                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold bg-white/90 text-[#273138] border border-[#DFD9CD] shadow-2xs hover:bg-[#181F28] hover:text-[#E5C365] hover:border-slate-800 transition-all duration-200"
+                >
+                  {service.title}
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollDepthSection>
 
       {/* Detailed Service Sections */}
       <section className="py-16 lg:py-24 bg-[#EFEBE1]">
@@ -96,7 +98,7 @@ export default function ServicesPage() {
               <FadeIn key={service.id} direction="up">
                 <article
                   id={service.slug}
-                  className="scroll-mt-28 card-luxury card-hairline-gold rounded-3xl p-8 sm:p-10 lg:p-12 relative overflow-hidden group"
+                  className="scroll-mt-28 card-luxury card-hairline-gold rounded-3xl p-6 sm:p-10 lg:p-12 relative overflow-hidden group"
                 >
                   {/* Subtle top corner ambient glow */}
                   <div className="absolute top-0 right-0 w-44 h-44 bg-[#C59B27]/5 rounded-bl-full pointer-events-none group-hover:bg-[#C59B27]/10 transition-colors duration-300" />
@@ -125,6 +127,7 @@ export default function ServicesPage() {
                     variant="gold"
                     size="sm"
                     rightIcon={<ArrowRight className="w-3.5 h-3.5 ml-1" />}
+                    className="w-full md:w-auto"
                   >
                     Discuss This Service
                   </Button>
@@ -239,35 +242,39 @@ export default function ServicesPage() {
       </section>
 
       {/* Advisory section: Not Sure Which Solution You Need? */}
-      <section className="py-16 bg-[#E5E0D4] border-t border-b border-[#DFD9CD]">
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full text-sm font-semibold uppercase tracking-wider bg-white/90 text-[#273138] border border-[#DFD9CD]">
-            <HelpCircle className="w-3.5 h-3.5 text-[#C59B27]" />
-            <span>Architecture Consultation</span>
+      <ScrollDepthSection>
+        <section className="py-16 bg-[#E5E0D4] border-t border-b border-[#DFD9CD]">
+          <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full text-sm font-semibold uppercase tracking-wider bg-white/90 text-[#273138] border border-[#DFD9CD]">
+              <HelpCircle className="w-3.5 h-3.5 text-[#C59B27]" />
+              <span>Architecture Consultation</span>
+            </div>
+
+            <h2 className="text-3xl font-bold text-[#273138] tracking-tight">
+              Not Sure Which Solution You Need?
+            </h2>
+
+            <p className="mt-4 text-base text-slate-700 max-w-2xl mx-auto leading-relaxed">
+              Most business challenges involve a combination of legacy databases, third-party APIs, and custom internal workflows. You do not need to diagnose the exact technical architecture yourself. Share your operational objectives, and our engineering team will recommend the most practical, cost-effective approach.
+            </p>
+
+            <div className="mt-8 flex justify-center">
+              <Button
+                href="/contact"
+                variant="gold"
+                size="lg"
+                rightIcon={<ArrowRight className="w-4 h-4 ml-1" />}
+              >
+                Discuss Your Requirements
+              </Button>
+            </div>
           </div>
+        </section>
+      </ScrollDepthSection>
 
-          <h2 className="text-3xl font-bold text-[#273138] tracking-tight">
-            Not Sure Which Solution You Need?
-          </h2>
-
-          <p className="mt-4 text-base text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Most business challenges involve a combination of legacy databases, third-party APIs, and custom internal workflows. You do not need to diagnose the exact technical architecture yourself. Share your operational objectives, and our engineering team will recommend the most practical, cost-effective approach.
-          </p>
-
-          <div className="mt-8 flex justify-center">
-            <Button
-              href="/contact"
-              variant="gold"
-              size="lg"
-              rightIcon={<ArrowRight className="w-4 h-4 ml-1" />}
-            >
-              Discuss Your Requirements
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <CTASection />
+      <ScrollDepthSection isLast>
+        <CTASection />
+      </ScrollDepthSection>
     </>
   );
 }

@@ -26,18 +26,59 @@
   --foreground: #273138;
 }
 
+html {
+  background-color: #EFEBE1;
+  scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: var(--font-poppins), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: #EFEBE1;
   color: var(--foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Custom smooth scroll behavior */
-html {
-  background-color: #EFEBE1;
-  scroll-behavior: smooth;
+/* Responsive media default */
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent iOS Safari 16px input zoom bug on mobile devices */
+@media screen and (max-width: 767px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  /* Completely remove scroll effects and smooth scroll delay on mobile view */
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .transform-gpu {
+    transform: none !important;
+    filter: none !important;
+    will-change: auto !important;
+  }
+}
+
+/* Notch & dynamic island support */
+header {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+footer {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -123,4 +164,24 @@ html {
   background: linear-gradient(135deg, #C59B27 0%, #F3D274 50%, #E5C365 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Luxury custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #FAF7F0;
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #D9CEBA;
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #C59B27;
+}
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #D9CEBA #FAF7F0;
 }

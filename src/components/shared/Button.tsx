@@ -53,7 +53,12 @@ export function Button({
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link
+        href={href}
+        className={classes}
+        onClick={props.onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
+        id={props.id}
+      >
         {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : leftIcon}
         <span>{children}</span>
         {!loading && rightIcon}

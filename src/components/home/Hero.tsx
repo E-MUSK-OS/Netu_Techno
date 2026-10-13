@@ -77,7 +77,7 @@ export function Hero() {
             {/* Headline */}
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#273138] tracking-tight leading-[1.12]"
+              className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#273138] tracking-tight leading-[1.14] sm:leading-[1.12]"
             >
               Software Solutions Built Around{" "}
               <span className="text-gold-gradient">Your Business</span>
@@ -115,10 +115,11 @@ export function Hero() {
                 variant="gold"
                 size="lg"
                 rightIcon={<ArrowRight className="w-4 h-4 ml-1" />}
+                className="w-full sm:w-auto"
               >
                 Discuss Technical Scope
               </Button>
-              <Button href="/services" variant="secondary" size="lg">
+              <Button href="/services" variant="secondary" size="lg" className="w-full sm:w-auto">
                 Explore Services & Stack
               </Button>
             </motion.div>
@@ -156,18 +157,18 @@ export function Hero() {
               className="relative rounded-2xl bg-[#10161E] p-2 sm:p-3 shadow-2xl border border-slate-800 ring-1 ring-white/10"
             >
               {/* Window Controls Bar */}
-              <div className="flex items-center justify-between px-3 py-2 border-b border-slate-800/80 text-sm text-slate-400">
-                <div className="flex items-center gap-2">
-                  <div className="flex items-center gap-1.5">
+              <div className="flex items-center justify-between px-3 py-2 border-b border-slate-800/80 text-sm text-slate-400 gap-2">
+                <div className="flex items-center gap-2 min-w-0">
+                  <div className="flex items-center gap-1.5 shrink-0">
                     <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
                     <span className="w-2.5 h-2.5 rounded-full bg-[#C59B27]/80" />
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                   </div>
-                  <span className="ml-2 font-mono text-[11px] text-slate-400">
+                  <span className="ml-2 font-mono text-[10px] sm:text-[11px] text-slate-400 truncate">
                     orchestrator.netutechno.internal
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400">
+                <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-mono text-emerald-400 shrink-0">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   <span>SYSTEM OPERATIONAL</span>
                 </div>

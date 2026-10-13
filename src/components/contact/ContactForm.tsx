@@ -1,16 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
+import { motion, AnimatePresence } from "framer-motion";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   contactFormSchema,
   ContactFormData,
   SERVICE_OPTIONS,
-  BUDGET_OPTIONS,
-  TIMELINE_OPTIONS,
 } from "@/lib/validation/contact";
 import { Button } from "@/components/shared/Button";
+import { CustomSelect } from "@/components/shared/CustomSelect";
 import {
   CheckCircle2,
   AlertCircle,
@@ -28,6 +28,8 @@ export function ContactForm() {
   const {
     register,
     handleSubmit,
+    control,
+    watch,
     reset,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
@@ -36,14 +38,16 @@ export function ContactForm() {
       fullName: "",
       workEmail: "",
       service: undefined,
+      otherService: "",
       projectDescription: "",
       companyName: "",
       phone: "",
-      budget: "",
-      timeline: "",
       _honeyPot: "",
     },
   });
+
+  const selectedService = watch("service");
+  const otherServiceText = watch("otherService");
 
   const onSubmit = async (data: ContactFormData) => {
     setSubmissionState({ status: "submitting" });
@@ -83,7 +87,7 @@ export function ContactForm() {
   };
 
   return (
-    <div className="w-full card-luxury card-hairline-gold rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden">
+    <div className="w-full card-luxury card-hairline-gold rounded-3xl p-6 sm:p-8 lg:p-10 relative">
       {/* Header Info */}
       <div className="mb-8">
         <h3 className="text-2xl font-bold text-[#273138] tracking-tight">
@@ -237,23 +241,80 @@ export function ContactForm() {
               htmlFor="phone"
               className="block text-sm font-semibold text-[#273138] uppercase tracking-wider mb-2"
             >
-              Phone Number <span className="text-slate-400 font-normal lowercase">(optional)</span>
+              Phone Number <span className="text-rose-500">*</span>
             </label>
-            <input
-              id="phone"
-              type="tel"
-              autoComplete="tel"
-              placeholder="+1 (555) 000-0000"
-              disabled={isSubmitting}
-              className={`w-full px-4 py-3 rounded-lg text-sm bg-white border transition-colors ${
-                errors.phone
-                  ? "border-rose-400 focus:border-rose-500 focus:ring-1 focus:ring-rose-500"
-                  : "border-[#DFD9CD] focus:border-[#C59B27] focus:ring-1 focus:ring-[#C59B27]"
-              }`}
-              {...register("phone")}
+            <Controller
+              name="phone"
+              control={control}
+              render={({ field }) => (
+                <input
+                  id="phone"
+                  type="tel"
+                  inputMode="numeric"
+                  pattern="[0-9]{10}"
+                  maxLength={10}
+                  autoComplete="tel"
+                  placeholder="(10 digits)"
+                  disabled={isSubmitting}
+                  className={`w-full px-4 py-3 rounded-lg text-sm bg-white border transition-colors ${
+                    errors.phone
+                      ? "border-rose-400 focus:border-rose-500 focus:ring-1 focus:ring-rose-500"
+                      : "border-[#DFD9CD] focus:border-[#C59B27] focus:ring-1 focus:ring-[#C59B27]"
+                  }`}
+                  value={field.value || ""}
+                  onChange={(e) => {
+                    const onlyDigits = e.target.value.replace(/\D/g, "").slice(0, 10);
+                    field.onChange(onlyDigits);
+                  }}
+                  onKeyDown={(e) => {
+                    // Allow navigation, deletion, selection, and clipboard shortcuts
+                    if (
+                      [
+                        "Backspace",
+                        "Delete",
+                        "Tab",
+                        "Escape",
+                        "Enter",
+                        "ArrowLeft",
+                        "ArrowRight",
+                        "ArrowUp",
+                        "ArrowDown",
+                        "Home",
+                        "End",
+                      ].includes(e.key) ||
+                      e.ctrlKey ||
+                      e.metaKey ||
+                      e.altKey
+                    ) {
+                      return;
+                    }
+                    // Prevent any character that is not a numeric digit (0-9)
+                    if (!/^[0-9]$/.test(e.key)) {
+                      e.preventDefault();
+                    }
+                  }}
+                  onPaste={(e) => {
+                    e.preventDefault();
+                    const pastedText = e.clipboardData.getData("text");
+                    const onlyDigits = pastedText.replace(/\D/g, "");
+                    const current = field.value || "";
+                    const target = e.target as HTMLInputElement;
+                    const start = target.selectionStart ?? current.length;
+                    const end = target.selectionEnd ?? current.length;
+                    const nextVal = (
+                      current.slice(0, start) +
+                      onlyDigits +
+                      current.slice(end)
+                    ).replace(/\D/g, "").slice(0, 10);
+                    field.onChange(nextVal);
+                  }}
+                  aria-invalid={Boolean(errors.phone)}
+                  aria-describedby={errors.phone ? "phone-error" : undefined}
+                />
+              )}
             />
             {errors.phone && (
-              <p className="mt-1.5 text-sm text-rose-600 font-medium">
+              <p id="phone-error" className="mt-1.5 text-sm text-rose-600 font-medium">
                 {errors.phone.message}
               </p>
             )}
@@ -268,85 +329,82 @@ export function ContactForm() {
           >
             Service Required <span className="text-rose-500">*</span>
           </label>
-          <select
-            id="service"
-            disabled={isSubmitting}
-            defaultValue=""
-            className={`w-full px-4 py-3 rounded-lg text-sm bg-white border transition-colors ${
-              errors.service
-                ? "border-rose-400 focus:border-rose-500 focus:ring-1 focus:ring-rose-500"
-                : "border-[#DFD9CD] focus:border-[#C59B27] focus:ring-1 focus:ring-[#C59B27]"
-            }`}
-            {...register("service")}
-            aria-invalid={Boolean(errors.service)}
-            aria-describedby={errors.service ? "service-error" : undefined}
-          >
-            <option value="" disabled>
-              Select the service you need...
-            </option>
-            {SERVICE_OPTIONS.map((opt) => (
-              <option key={opt} value={opt}>
-                {opt}
-              </option>
-            ))}
-          </select>
+          <Controller
+            name="service"
+            control={control}
+            render={({ field }) => (
+              <CustomSelect
+                id="service"
+                name={field.name}
+                value={field.value}
+                onChange={field.onChange}
+                options={SERVICE_OPTIONS}
+                placeholder="Select the service you need..."
+                displayValue={otherServiceText}
+                disabled={isSubmitting}
+                error={Boolean(errors.service)}
+                aria-describedby={errors.service ? "service-error" : undefined}
+                aria-invalid={Boolean(errors.service)}
+              />
+            )}
+          />
           {errors.service && (
             <p id="service-error" className="mt-1.5 text-sm text-rose-600 font-medium">
               {errors.service.message}
             </p>
           )}
+
+          {/* Compulsory custom specification text box when "Other" is selected */}
+          <AnimatePresence>
+            {selectedService === "Other" && (
+              <motion.div
+                initial={{ opacity: 0, height: 0, y: -6 }}
+                animate={{ opacity: 1, height: "auto", y: 0 }}
+                exit={{ opacity: 0, height: 0, y: -6 }}
+                transition={{ duration: 0.22, ease: "easeOut" }}
+                className="overflow-hidden mt-3"
+              >
+                <div className="p-4 rounded-2xl bg-[#FAF6EC] border border-[#E8DDBF] space-y-2">
+                  <div className="flex items-center justify-between">
+                    <label
+                      htmlFor="otherService"
+                      className="block text-xs font-bold text-[#273138] uppercase tracking-wider"
+                    >
+                      Specify Your Required Service <span className="text-rose-500">*</span>
+                    </label>
+                    <span className="text-[10px] font-mono font-bold text-[#8C6D15] bg-[#FAF4E4] border border-[#E8D7A5] px-2 py-0.5 rounded-full">
+                      COMPULSORY
+                    </span>
+                  </div>
+                  <input
+                    id="otherService"
+                    type="text"
+                    placeholder="e.g. AI Workflow Integration, Microservices Audit, Mobile App..."
+                    disabled={isSubmitting}
+                    className={`w-full px-4 py-3 rounded-xl text-sm bg-white border transition-colors ${
+                      errors.otherService
+                        ? "border-rose-400 focus:border-rose-500 focus:ring-1 focus:ring-rose-500"
+                        : "border-[#DFD9CD] focus:border-[#C59B27] focus:ring-1 focus:ring-[#C59B27]"
+                    }`}
+                    {...register("otherService")}
+                    aria-invalid={Boolean(errors.otherService)}
+                    aria-describedby={errors.otherService ? "otherService-error" : undefined}
+                  />
+                  {errors.otherService && (
+                    <p id="otherService-error" className="text-xs text-rose-600 font-medium">
+                      {errors.otherService.message}
+                    </p>
+                  )}
+                  <p className="text-[11px] text-slate-500 leading-normal">
+                    The custom service name you type here directly replaces &quot;Other&quot; in the selector above and will be reviewed by our architecture team.
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
-        {/* Row 4: Budget Range & Timeline (Optional) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div>
-            <label
-              htmlFor="budget"
-              className="block text-sm font-semibold text-[#273138] uppercase tracking-wider mb-2"
-            >
-              Estimated Budget <span className="text-slate-400 font-normal lowercase">(optional)</span>
-            </label>
-            <select
-              id="budget"
-              disabled={isSubmitting}
-              defaultValue=""
-              className="w-full px-4 py-3 rounded-lg text-sm bg-white border border-[#DFD9CD] focus:border-[#C59B27] focus:ring-1 focus:ring-[#C59B27] transition-colors"
-              {...register("budget")}
-            >
-              <option value="">Select an estimated budget range...</option>
-              {BUDGET_OPTIONS.map((opt) => (
-                <option key={opt} value={opt}>
-                  {opt}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label
-              htmlFor="timeline"
-              className="block text-sm font-semibold text-[#273138] uppercase tracking-wider mb-2"
-            >
-              Desired Timeline <span className="text-slate-400 font-normal lowercase">(optional)</span>
-            </label>
-            <select
-              id="timeline"
-              disabled={isSubmitting}
-              defaultValue=""
-              className="w-full px-4 py-3 rounded-lg text-sm bg-white border border-[#DFD9CD] focus:border-[#C59B27] focus:ring-1 focus:ring-[#C59B27] transition-colors"
-              {...register("timeline")}
-            >
-              <option value="">Select your project timeline...</option>
-              {TIMELINE_OPTIONS.map((opt) => (
-                <option key={opt} value={opt}>
-                  {opt}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {/* Row 5: Project Description */}
+        {/* Row 4: Project Description */}
         <div>
           <label
             htmlFor="projectDescription"
@@ -391,7 +449,7 @@ export function ContactForm() {
             loading={isSubmitting}
             rightIcon={!isSubmitting ? <Send className="w-4 h-4 ml-1" /> : undefined}
             disabled={isSubmitting}
-            className="sm:w-auto"
+            className="w-full sm:w-auto"
             id="submit-contact-button"
           >
             {isSubmitting ? (

@@ -4,7 +4,7 @@ import { careersData } from "@/config/careers";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { CTASection } from "@/components/shared/CTASection";
 import { CareersClient } from "@/components/careers/CareersClient";
-import { FadeIn } from "@/components/shared/Motion";
+import { FadeIn, ScrollDepthSection } from "@/components/shared/Motion";
 
 export const metadata: Metadata = {
   title: "Careers — Join the Engineering Guild",
@@ -62,26 +62,28 @@ export default function CareersPage() {
       />
 
       {/* Hero / Header Section */}
-      <section className="relative pt-16 pb-12 sm:pt-24 sm:pb-16 bg-[#EFEBE1] border-b border-[#DFD9CD] overflow-hidden">
-        {/* Subtle grid background */}
-        <div
-          className="absolute inset-0 opacity-[0.03] pointer-events-none"
-          style={{
-            backgroundImage: `radial-gradient(#181F28 1px, transparent 1px)`,
-            backgroundSize: "32px 32px",
-          }}
-          aria-hidden="true"
-        />
-
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <SectionHeading
-            badge="Join Our Engineering Guild"
-            title="Build Software That Solves Real-World Problems"
-            description="We build mission-critical digital systems, workflow automations, and scalable platforms. We value clean architectural decisions, engineering ownership, and teams that take pride in craft."
-            align="center"
+      <ScrollDepthSection isFirst>
+        <section className="relative pt-16 pb-12 sm:pt-24 sm:pb-16 bg-[#EFEBE1] border-b border-[#DFD9CD] overflow-hidden">
+          {/* Subtle grid background */}
+          <div
+            className="absolute inset-0 opacity-[0.03] pointer-events-none"
+            style={{
+              backgroundImage: `radial-gradient(#181F28 1px, transparent 1px)`,
+              backgroundSize: "32px 32px",
+            }}
+            aria-hidden="true"
           />
-        </div>
-      </section>
+
+          <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <SectionHeading
+              badge="Join Our Engineering Guild"
+              title="Build Software That Solves Real-World Problems"
+              description="We build mission-critical digital systems, workflow automations, and scalable platforms. We value clean architectural decisions, engineering ownership, and teams that take pride in craft."
+              align="center"
+            />
+          </div>
+        </section>
+      </ScrollDepthSection>
 
       {/* Main Careers Content Area */}
       <section className="py-16 sm:py-20 bg-[#EFEBE1]">
@@ -91,12 +93,14 @@ export default function CareersPage() {
       </section>
 
       {/* Bottom CTA for Open Pitches */}
-      <CTASection
-        headline="Don't See Your Exact Role Listed?"
-        description="We are always looking for exceptional engineers, systems architects, and technical product thinkers. Send your portfolio and an introduction directly to our team."
-        primaryButtonText="Send an Open Pitch"
-        primaryButtonHref={`mailto:${siteConfig.contact.careersEmail}?subject=Open%20Engineering%20Pitch%20-%20Netu%20Techno`}
-      />
+      <ScrollDepthSection isLast>
+        <CTASection
+          headline="Don't See Your Exact Role Listed?"
+          description="We are always looking for exceptional engineers, systems architects, and technical product thinkers. Send your portfolio and an introduction directly to our team."
+          primaryButtonText="Send an Open Pitch"
+          primaryButtonHref={`mailto:${siteConfig.contact.careersEmail}?subject=Open%20Engineering%20Pitch%20-%20Netu%20Techno`}
+        />
+      </ScrollDepthSection>
     </>
   );
 }
