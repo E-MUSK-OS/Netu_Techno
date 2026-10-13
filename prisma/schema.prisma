@@ -1,0 +1,28 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ContactSubmission {
+  id                 String   @id @default(uuid())
+  name               String
+  email              String
+  company            String?
+  phone              String?
+  service            String
+  projectDescription String   @db.Text
+  budget             String?
+  timeline           String?
+  status             String   @default("NEW") // NEW, REVIEWED, CONTACTED, ARCHIVED
+  ipAddress          String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([email])
+  @@index([createdAt])
+  @@index([status])
+}

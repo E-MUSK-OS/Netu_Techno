@@ -1,26 +1,128 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --color-canvas: #EFEBE1;
+  --color-brand-charcoal: #181F28;
+  --color-brand-charcoal-dark: #10161E;
+  --color-brand-charcoal-light: #2A3442;
+  --color-brand-gold: #C59B27;
+  --color-brand-gold-hover: #AF851A;
+  --color-brand-gold-light: #E5C365;
+  --color-brand-gold-subtle: #FAF6ED;
+  --color-surface: #FFFFFF;
+  --color-surface-cream: #F8F6F0;
+  --color-surface-subtle: #E8E3D7;
+  --color-surface-muted: #DFD9CC;
+  --color-text-main: #181F28;
+  --color-text-secondary: #4B5563;
+  --color-text-muted: #808894;
+  --color-border-subtle: #DFD9CC;
+  --color-border-strong: #CEC7B8;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #EFEBE1;
+  --foreground: #181F28;
 }
 
 body {
-  background: var(--background);
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #EFEBE1;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  letter-spacing: -0.012em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom smooth scroll behavior */
+html {
+  background-color: #EFEBE1;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Accessible focus ring styled in brand gold */
+:focus-visible {
+  outline: 2px solid #C59B27;
+  outline-offset: 2px;
+}
+
+/* Premium Card System */
+.card-luxury {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid #DFD9CD;
+  box-shadow: 0 4px 20px -4px rgba(24, 31, 40, 0.05), 0 1px 3px rgba(24, 31, 40, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-luxury:hover {
+  border-color: rgba(197, 155, 39, 0.7);
+  box-shadow: 0 20px 40px -15px rgba(197, 155, 39, 0.18), 0 0 0 1px rgba(197, 155, 39, 0.2);
+  transform: translateY(-3px);
+}
+
+.card-luxury-dark {
+  background-color: #181F28;
+  border: 1px solid #2A3442;
+  box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-luxury-dark:hover {
+  border-color: rgba(197, 155, 39, 0.6);
+  box-shadow: 0 20px 45px -15px rgba(197, 155, 39, 0.25), 0 0 0 1px rgba(197, 155, 39, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Subtle top hairline highlight for card borders */
+.card-hairline-gold {
+  position: relative;
+}
+.card-hairline-gold::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  right: 2rem;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #C59B27, #E5C365, transparent);
+  border-radius: 9999px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+/* Shimmer and Gradient Highlights */
+@keyframes goldShimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #A8811A 0%, #C59B27 50%, #8C6D15 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-bright {
+  background: linear-gradient(135deg, #C59B27 0%, #F3D274 50%, #E5C365 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
