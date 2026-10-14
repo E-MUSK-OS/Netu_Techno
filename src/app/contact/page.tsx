@@ -21,28 +21,93 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/contact",
   },
+  openGraph: {
+    title: "Contact Us — Start a Project Discussion | Netu Techno",
+    description:
+      "Share your project requirements or business challenge. Netu Techno engineers will review your needs and determine the appropriate technical solution.",
+    url: `${siteConfig.url}/contact`,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: "/images/netu-techno-clean.png",
+        width: 1200,
+        height: 630,
+        alt: "Contact Netu Techno",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Us — Start a Project Discussion | Netu Techno",
+    description:
+      "Share your project requirements or business challenge. Netu Techno engineers will review your needs and determine the appropriate technical solution.",
+    images: ["/images/netu-techno-clean.png"],
+  },
 };
 
 export default function ContactPage() {
-  const contactJsonLd = {
+  const contactStructuredData = {
     "@context": "https://schema.org",
-    "@type": "ContactPage",
-    name: "Contact Netu Techno",
-    description: "Submit project requirements or business automation inquiries.",
-    url: `${siteConfig.url}/contact`,
-    mainEntity: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      email: siteConfig.contact.email,
-      telephone: siteConfig.contact.phone,
-    },
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: siteConfig.url,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Contact Us",
+            item: `${siteConfig.url}/contact`,
+          },
+        ],
+      },
+      {
+        "@type": "ContactPage",
+        "@id": `${siteConfig.url}/contact#contact`,
+        name: "Contact Netu Techno",
+        description: "Submit project requirements or business automation inquiries.",
+        url: `${siteConfig.url}/contact`,
+        mainEntity: {
+          "@type": "ProfessionalService",
+          name: siteConfig.name,
+          email: siteConfig.contact.email,
+          telephone: siteConfig.contact.phone,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "83, Sardar Nagar Soc., Amroli Kosad Road, Gujarat Housing Board",
+            addressLocality: "Surat",
+            addressRegion: "Gujarat",
+            postalCode: "394107",
+            addressCountry: "IN",
+          },
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: 21.2333,
+            longitude: 72.8468,
+          },
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              opens: "09:00",
+              closes: "18:30",
+            },
+          ],
+        },
+      },
+    ],
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactStructuredData) }}
       />
 
       {/* Header Banner */}

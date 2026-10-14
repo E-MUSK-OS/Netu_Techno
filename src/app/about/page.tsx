@@ -21,9 +21,66 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/about",
   },
+  openGraph: {
+    title: "About Netu Techno — Engineering Philosophy & Principles",
+    description:
+      "Netu Techno is a software solutions company focused on helping businesses turn technical challenges into practical digital systems with clean architecture and transparent collaboration.",
+    url: `${siteConfig.url}/about`,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: "/images/netu-techno-clean.png",
+        width: 1200,
+        height: 630,
+        alt: "About Netu Techno",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Netu Techno — Engineering Philosophy & Principles",
+    description:
+      "Netu Techno is a software solutions company focused on helping businesses turn technical challenges into practical digital systems with clean architecture and transparent collaboration.",
+    images: ["/images/netu-techno-clean.png"],
+  },
 };
 
 export default function AboutPage() {
+  const aboutStructuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: siteConfig.url,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "About Us",
+            item: `${siteConfig.url}/about`,
+          },
+        ],
+      },
+      {
+        "@type": "AboutPage",
+        "@id": `${siteConfig.url}/about#about`,
+        name: "About Netu Techno",
+        description: siteConfig.description,
+        url: `${siteConfig.url}/about`,
+        mainEntity: {
+          "@type": "Organization",
+          name: siteConfig.name,
+          url: siteConfig.url,
+        },
+      },
+    ],
+  };
+
   const principles = [
     {
       number: "01",
@@ -57,6 +114,10 @@ export default function AboutPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutStructuredData) }}
+      />
       {/* Hero Section */}
       <ScrollDepthSection isFirst>
         <section className="bg-gradient-to-b from-[#EFEBE1] via-[#F4F1E8] to-[#EFEBE1] pt-16 pb-20 border-b border-[#DFD9CD]">

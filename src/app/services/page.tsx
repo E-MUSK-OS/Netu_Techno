@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Button } from "@/components/shared/Button";
 import { CTASection } from "@/components/shared/CTASection";
 import { FadeIn, ScrollDepthSection } from "@/components/shared/Motion";
+import { siteConfig } from "@/config/site";
 import {
   Code2,
   Layers,
@@ -26,6 +27,28 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/services",
   },
+  openGraph: {
+    title: "Software Engineering & Automation Services | Netu Techno",
+    description:
+      "Explore practical software solutions that help businesses improve workflows, connect systems, and develop scalable digital products. Custom development, SaaS engineering, APIs, and cloud optimization.",
+    url: `${siteConfig.url}/services`,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: "/images/netu-techno-clean.png",
+        width: 1200,
+        height: 630,
+        alt: "Netu Techno Software Services",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Software Engineering & Automation Services | Netu Techno",
+    description:
+      "Explore practical software solutions that help businesses improve workflows, connect systems, and develop scalable digital products.",
+    images: ["/images/netu-techno-clean.png"],
+  },
 };
 
 const iconMap = {
@@ -39,26 +62,51 @@ const iconMap = {
 };
 
 export default function ServicesPage() {
-  const serviceSchemaList = {
+  const servicesStructuredData = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    itemListElement: servicesData.map((s, idx) => ({
-      "@type": "Service",
-      position: idx + 1,
-      name: s.title,
-      description: s.shortDescription,
-      provider: {
-        "@type": "Organization",
-        name: "Netu Techno",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: siteConfig.url,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Services",
+            item: `${siteConfig.url}/services`,
+          },
+        ],
       },
-    })),
+      {
+        "@type": "ItemList",
+        name: "Netu Techno Software Engineering Services",
+        itemListElement: servicesData.map((s, idx) => ({
+          "@type": "Service",
+          position: idx + 1,
+          name: s.title,
+          description: s.shortDescription,
+          url: `${siteConfig.url}/services#${s.slug}`,
+          serviceType: s.title,
+          provider: {
+            "@type": "Organization",
+            name: siteConfig.name,
+            url: siteConfig.url,
+          },
+        })),
+      },
+    ],
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchemaList) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesStructuredData) }}
       />
 
       {/* Services Header Banner */}

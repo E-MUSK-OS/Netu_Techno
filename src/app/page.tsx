@@ -12,6 +12,8 @@ import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { CTASection } from "@/components/shared/CTASection";
 import { ScrollDepthSection } from "@/components/shared/ScrollDepthSection";
 
+import { siteConfig } from "@/config/site";
+
 export const metadata: Metadata = {
   title: "Netu Techno — Software Solutions Built Around Your Business",
   description:
@@ -19,11 +21,84 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  openGraph: {
+    title: "Netu Techno — Software Solutions Built Around Your Business",
+    description:
+      "Netu Techno helps businesses solve complex operational challenges through custom software, intelligent automation, and scalable digital solutions.",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: "/images/netu-techno-clean.png",
+        width: 1200,
+        height: 630,
+        alt: "Netu Techno — Software Solutions Built Around Your Business",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Netu Techno — Software Solutions Built Around Your Business",
+    description:
+      "Netu Techno helps businesses solve complex operational challenges through custom software, intelligent automation, and scalable digital solutions.",
+    images: ["/images/netu-techno-clean.png"],
+  },
 };
 
 export default function HomePage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What software development services does Netu Techno provide?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Netu Techno specializes in custom software development, business process automation, API integrations, SaaS product engineering, custom & WordPress web development, and cloud DevOps solutions.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where is Netu Techno located and do you work globally?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Netu Techno is headquartered at 83, Sardar Nagar Soc., Amroli Kosad Road, Gujarat Housing Board, Surat, Gujarat 394107, India. We partner with clients locally in India and internationally across the US, UK, and UAE.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can Netu Techno build custom WordPress websites as well as custom web apps?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, we engineer bespoke WordPress platforms, custom themes, Headless WordPress solutions, and modern full-stack web applications using Next.js, React, Node.js, and TypeScript.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How does Netu Techno ensure system security and scalability?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We build with defensive coding, automated schema validations, zero-trust API architecture, database indexing, and cloud-native deployments designed to scale predictably under production traffic.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How can I start a project discussion with Netu Techno?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "You can reach out through our website contact form at /contact, email us at info@netutechno.com, or message us on WhatsApp at +91 82007 05348.",
+        },
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <ScrollDepthSection isFirst>
         <Hero />
       </ScrollDepthSection>

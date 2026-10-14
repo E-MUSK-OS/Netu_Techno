@@ -28,19 +28,34 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     "custom software development",
-    "business automation",
-    "API integration",
+    "software company in Surat",
+    "software development company Gujarat",
+    "custom web application development",
+    "WordPress web development company",
+    "Next.js web development agency",
+    "business process automation",
+    "API integration services",
     "SaaS product engineering",
-    "scalable digital products",
+    "enterprise workflow automation",
+    "full stack development India",
+    "cloud architecture and DevOps",
+    "database design and data architecture",
     "Netu Techno",
-    "software architecture",
+    "scalable digital solutions",
   ],
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
+  category: "technology",
+  classification: "Software Development & Technology Consulting",
   icons: {
-    icon: "/images/netu-emblem.png",
-    apple: "/images/netu-emblem.png",
+    icon: [
+      { url: "/images/netu-emblem.png" },
+      { url: "/images/netu-emblem.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [
+      { url: "/images/netu-emblem.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   formatDetection: {
     email: false,
@@ -54,11 +69,22 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
     siteName: siteConfig.name,
+    images: [
+      {
+        url: "/images/netu-techno-clean.png",
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} — Software Solutions Built Around Your Business`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
+    images: ["/images/netu-techno-clean.png"],
+    creator: "@netutechno",
+    site: "@netutechno",
   },
   robots: {
     index: true,
@@ -81,20 +107,94 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const organizationSchema = {
+  const rootStructuredData = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteConfig.name,
-    legalName: siteConfig.legalName,
-    url: siteConfig.url,
-    logo: `${siteConfig.url}/images/netu-techno-clean.png`,
-    description: siteConfig.description,
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "technical support and sales",
-      email: siteConfig.contact.email,
-    },
-    sameAs: [siteConfig.contact.linkedin],
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${siteConfig.url}/#organization`,
+        name: siteConfig.name,
+        legalName: siteConfig.legalName,
+        url: siteConfig.url,
+        logo: `${siteConfig.url}/images/netu-techno-clean.png`,
+        image: `${siteConfig.url}/images/netu-techno-clean.png`,
+        description: siteConfig.description,
+        email: siteConfig.contact.email,
+        telephone: siteConfig.contact.phone,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "83, Sardar Nagar Soc., Amroli Kosad Road, Gujarat Housing Board",
+          addressLocality: "Surat",
+          addressRegion: "Gujarat",
+          postalCode: "394107",
+          addressCountry: "IN",
+        },
+        sameAs: [
+          siteConfig.contact.linkedin,
+          siteConfig.contact.instagram,
+          siteConfig.contact.github,
+          siteConfig.contact.twitter,
+          siteConfig.contact.whatsapp,
+        ],
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "technical support and sales",
+          telephone: siteConfig.contact.phone,
+          email: siteConfig.contact.email,
+          availableLanguage: ["English", "Hindi", "Gujarati"],
+        },
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": `${siteConfig.url}/#service-business`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        logo: `${siteConfig.url}/images/netu-techno-clean.png`,
+        image: `${siteConfig.url}/images/netu-techno-clean.png`,
+        description: siteConfig.description,
+        telephone: siteConfig.contact.phone,
+        email: siteConfig.contact.email,
+        priceRange: "$$",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "83, Sardar Nagar Soc., Amroli Kosad Road, Gujarat Housing Board",
+          addressLocality: "Surat",
+          addressRegion: "Gujarat",
+          postalCode: "394107",
+          addressCountry: "IN",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 21.2333,
+          longitude: 72.8468,
+        },
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "09:00",
+            closes: "18:30",
+          },
+        ],
+        areaServed: [
+          { "@type": "Country", name: "India" },
+          { "@type": "Country", name: "United States" },
+          { "@type": "Country", name: "United Kingdom" },
+          { "@type": "Country", name: "United Arab Emirates" },
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteConfig.url}/#website`,
+        url: siteConfig.url,
+        name: siteConfig.name,
+        description: siteConfig.description,
+        publisher: {
+          "@id": `${siteConfig.url}/#organization`,
+        },
+        inLanguage: "en-US",
+      },
+    ],
   };
 
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
@@ -104,7 +204,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(rootStructuredData) }}
         />
         {gaId && (
           <>

@@ -20,45 +20,89 @@ export const metadata: Metadata = {
     url: `${siteConfig.url}/careers`,
     siteName: siteConfig.name,
     type: "website",
+    images: [
+      {
+        url: "/images/netu-techno-clean.png",
+        width: 1200,
+        height: 630,
+        alt: "Careers at Netu Techno",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Engineering Careers at Netu Techno",
+    description:
+      "We are hiring Frontend Developer, Backend Developer, and Full Stack Developer roles. Join our team in Surat, Gujarat.",
+    images: ["/images/netu-techno-clean.png"],
   },
 };
 
 export default function CareersPage() {
-  const careersSchema = {
+  const careersStructuredData = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    itemListElement: careersData.map((job, idx) => ({
-      "@type": "JobPosting",
-      position: idx + 1,
-      title: job.title,
-      description: job.overview,
-      datePosted: "2026-01-01",
-      employmentType: "FULL_TIME",
-      hiringOrganization: {
-        "@type": "Organization",
-        name: siteConfig.name,
-        sameAs: siteConfig.url,
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: siteConfig.url,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Careers",
+            item: `${siteConfig.url}/careers`,
+          },
+        ],
       },
-      jobLocation: {
-        "@type": "Place",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "83, Sardar Nagar Soc., Amroli Kosad Road, Gujarat Housing Board",
-          addressLocality: "Surat",
-          addressRegion: "Gujarat",
-          postalCode: "394107",
-          addressCountry: "IN",
-        },
+      {
+        "@type": "ItemList",
+        name: "Open Engineering Positions at Netu Techno",
+        itemListElement: careersData.map((job, idx) => ({
+          "@type": "JobPosting",
+          position: idx + 1,
+          title: job.title,
+          description: `${job.overview} Key responsibilities: ${job.responsibilities.join(", ")}. Requirements: ${job.requiredSkills.join(", ")}.`,
+          datePosted: "2026-01-01",
+          validThrough: "2026-12-31",
+          employmentType: "FULL_TIME",
+          directApply: true,
+          hiringOrganization: {
+            "@type": "Organization",
+            name: siteConfig.name,
+            sameAs: siteConfig.url,
+            logo: `${siteConfig.url}/images/netu-techno-clean.png`,
+          },
+          jobLocation: {
+            "@type": "Place",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "83, Sardar Nagar Soc., Amroli Kosad Road, Gujarat Housing Board",
+              addressLocality: "Surat",
+              addressRegion: "Gujarat",
+              postalCode: "394107",
+              addressCountry: "IN",
+            },
+          },
+          applicantLocationRequirements: {
+            "@type": "Country",
+            name: "India",
+          },
+        })),
       },
-    })),
+    ],
   };
 
   return (
     <>
-      {/* Schema.org JobPosting Structured Data */}
+      {/* Schema.org JobPosting & Breadcrumb Structured Data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(careersSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(careersStructuredData) }}
       />
 
       {/* Hero / Header Section */}
