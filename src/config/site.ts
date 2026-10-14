@@ -34,9 +34,10 @@ export const siteConfig = {
   },
   navigation: [
     { title: "Home", href: "/" },
+    { title: "About", href: "/about" },
     { title: "Services", href: "/services" },
-    { title: "About Us", href: "/about" },
     { title: "Careers", href: "/careers" },
+    { title: "Blogs", href: "/blog" },
     { title: "Contact Us", href: "/contact" },
   ] satisfies NavItem[],
   ctas: {
