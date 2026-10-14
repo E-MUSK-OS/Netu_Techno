@@ -20,7 +20,7 @@ export const siteConfig = {
     workingHours: "Monday – Friday: 9:00 AM – 6:30 PM IST (Global Coverage Available)",
     whatsapp: "https://wa.me/918200705348",
     instagram: "https://www.instagram.com/netu_techno",
-    linkedin: "https://www.linkedin.com/in/netu-techno-a1a450427",
+    linkedin: "https://www.linkedin.com/company/netu-techno",
     github: "https://github.com/netu-techno",
     twitter: "https://x.com/netutechno",
   },
