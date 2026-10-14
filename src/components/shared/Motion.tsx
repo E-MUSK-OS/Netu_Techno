@@ -226,4 +226,5 @@ export function HoverCardMotion({
 export { motion, AnimatePresence } from "framer-motion";
 export { ScrollDepthSection } from "./ScrollDepthSection";
 export { SmoothScrollProvider, scrollToTop } from "./SmoothScrollProvider";
+export { ScrollToTop } from "./ScrollToTop";
 

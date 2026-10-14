@@ -4,7 +4,7 @@ import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { ScrollProgress, SmoothScrollProvider } from "@/components/shared/Motion";
+import { ScrollProgress, SmoothScrollProvider, ScrollToTop } from "@/components/shared/Motion";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -138,6 +138,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <ScrollToTop />
         </SmoothScrollProvider>
       </body>
     </html>
