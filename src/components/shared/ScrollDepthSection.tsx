@@ -31,9 +31,9 @@ interface ScrollDepthSectionProps {
 }
 
 const SPRING_CONFIG = {
-  stiffness: 80,
-  damping: 24,
-  mass: 0.6,
+  stiffness: 90,
+  damping: 26,
+  mass: 0.5,
   restDelta: 0.0001,
 };
 
@@ -70,15 +70,16 @@ function useMotionSettings() {
 }
 
 /**
- * Top section of a page:
+ * Top section of a page (Hero):
  * Starts at scrollY=0 with 100% sharp focus (zero blur, scale 1.0, opacity 1.0).
- * Only animates upward, slightly recedes, and blurs as the user scrolls down away from it (on desktop).
+ * Holds 100% crisp sharpness with 0 blur for the first 55% of scrolling away,
+ * only gently receding with subtle blur later as it finishes exiting offscreen.
  */
 function FirstSection({
   children,
   className,
   id,
-  blurAmount = 10,
+  blurAmount = 6,
 }: ScrollDepthSectionProps) {
   const targetRef = useRef<HTMLDivElement>(null);
   const canAnimate = useMotionSettings();
@@ -90,10 +91,16 @@ function FirstSection({
 
   const exitProgress = useSpring(exitRaw, SPRING_CONFIG);
 
-  const scale = useTransform(exitProgress, [0, 1], [1, 0.92]);
-  const y = useTransform(exitProgress, [0, 1], [0, -60]);
-  const blur = useTransform(exitProgress, [0, 1], [0, blurAmount]);
-  const opacity = useTransform(exitProgress, [0, 1], [1, 0.25]);
+  // Maintain 100% crisp focus, zero blur, and normal scale for the first 55% of scrolling down.
+  // Blur and subtle scaling only begin later when the section is well on its way offscreen.
+  const scale = useTransform(exitProgress, [0, 0.55, 1], [1, 1, 0.94]);
+  const y = useTransform(exitProgress, [0, 0.55, 1], [0, 0, -45]);
+  const blur = useTransform(
+    exitProgress,
+    [0, 0.55, 0.85, 1],
+    [0, 0, blurAmount * 0.5, blurAmount]
+  );
+  const opacity = useTransform(exitProgress, [0, 0.55, 1], [1, 1, 0.3]);
   const filter = useMotionTemplate`blur(${blur}px)`;
 
   return (
@@ -125,29 +132,32 @@ function FirstSection({
 
 /**
  * Last section of a page (e.g. CTA or Footer):
- * Comes forward on entry from below (0.92 -> 1.0, blurAmount -> 0px)
- * and stays in crisp focus at the bottom of the page (on desktop).
+ * Smoothly settles in from below and stays in 100% crisp focus.
  */
 function LastSection({
   children,
   className,
   id,
-  blurAmount = 10,
+  blurAmount = 6,
 }: ScrollDepthSectionProps) {
   const targetRef = useRef<HTMLDivElement>(null);
   const canAnimate = useMotionSettings();
 
   const { scrollYProgress: enterRaw } = useScroll({
     target: targetRef,
-    offset: ["start end", "start 65%"],
+    offset: ["start end", "start 75%"],
   });
 
   const enterProgress = useSpring(enterRaw, SPRING_CONFIG);
 
-  const scale = useTransform(enterProgress, [0, 1], [0.92, 1]);
-  const y = useTransform(enterProgress, [0, 1], [60, 0]);
-  const blur = useTransform(enterProgress, [0, 1], [blurAmount, 0]);
-  const opacity = useTransform(enterProgress, [0, 1], [0.3, 1]);
+  const scale = useTransform(enterProgress, [0, 1], [0.96, 1]);
+  const y = useTransform(enterProgress, [0, 1], [40, 0]);
+  const blur = useTransform(
+    enterProgress,
+    [0, 0.35, 1],
+    [blurAmount * 0.3, 0, 0]
+  );
+  const opacity = useTransform(enterProgress, [0, 0.4, 1], [0.6, 0.9, 1]);
   const filter = useMotionTemplate`blur(${blur}px)`;
 
   return (
@@ -179,26 +189,30 @@ function LastSection({
 
 /**
  * Standard middle section:
- * - On desktop: softly comes forward from below, stays 100% sharp in view, glides upward with blur on exit.
+ * - Stays 100% sharp and unblurred while in view and during normal reading.
+ * - Zero blur when entering or scrolling a little bit.
+ * - Only after scrolling more than 55% past the top does it softly blur as it recedes offscreen.
  * - On mobile (< 768px): completely disabled for natural, static, zero-blur native scrolling.
  */
 function MiddleSection({
   children,
   className,
   id,
-  blurAmount = 10,
+  blurAmount = 6,
 }: ScrollDepthSectionProps) {
   const targetRef = useRef<HTMLDivElement>(null);
   const canAnimate = useMotionSettings();
 
+  // Entrance: smoothly enters from below, clearing any entry blur almost instantly
   const { scrollYProgress: enterRaw } = useScroll({
     target: targetRef,
-    offset: ["start end", "start 65%"],
+    offset: ["start end", "start 80%"],
   });
 
+  // Exit: only tracks as the section moves past the top of the viewport
   const { scrollYProgress: exitRaw } = useScroll({
     target: targetRef,
-    offset: ["end 65%", "end -10%"],
+    offset: ["start start", "end start"],
   });
 
   const enterProgress = useSpring(enterRaw, SPRING_CONFIG);
@@ -207,40 +221,53 @@ function MiddleSection({
   const scale = useTransform(
     [enterProgress, exitProgress],
     ([enter, exit]: number[]) => {
-      if (exit > 0.005) {
-        return 1 - exit * 0.08;
+      if (exit > 0.05) {
+        if (exit < 0.55) return 1;
+        const normalized = (exit - 0.55) / 0.45;
+        return 1 - normalized * 0.06;
       }
-      return 0.92 + enter * 0.08;
+      return 0.96 + enter * 0.04;
     }
   );
 
   const y = useTransform(
     [enterProgress, exitProgress],
     ([enter, exit]: number[]) => {
-      if (exit > 0.005) {
-        return -exit * 60;
+      if (exit > 0.05) {
+        if (exit < 0.55) return 0;
+        const normalized = (exit - 0.55) / 0.45;
+        return -normalized * 45;
       }
-      return (1 - enter) * 60;
+      return (1 - enter) * 40;
     }
   );
 
   const blur = useTransform(
     [enterProgress, exitProgress],
     ([enter, exit]: number[]) => {
-      if (exit > 0.005) {
-        return exit * blurAmount;
+      if (exit > 0.05) {
+        // Hold 100% sharp zero-blur focus until scrolled more than 55% past the top
+        if (exit < 0.55) return 0;
+        const normalized = (exit - 0.55) / 0.45;
+        return normalized * blurAmount;
       }
-      return (1 - enter) * blurAmount;
+      // On entry: quick clearance so content is never blurry when reading
+      if (enter < 0.3) {
+        return (1 - enter / 0.3) * (blurAmount * 0.3);
+      }
+      return 0;
     }
   );
 
   const opacity = useTransform(
     [enterProgress, exitProgress],
     ([enter, exit]: number[]) => {
-      if (exit > 0.005) {
-        return 1 - exit * 0.75;
+      if (exit > 0.05) {
+        if (exit < 0.55) return 1;
+        const normalized = (exit - 0.55) / 0.45;
+        return 1 - normalized * 0.7;
       }
-      return 0.3 + enter * 0.7;
+      return 0.5 + enter * 0.5;
     }
   );
 
