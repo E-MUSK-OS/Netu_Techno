@@ -88,7 +88,7 @@ export function Hero() {
               variants={itemVariants}
               className="text-lg sm:text-xl text-slate-700 leading-relaxed font-normal max-w-2xl"
             >
-              Netu Techno helps businesses solve complex operational challenges through custom software, intelligent automation, and scalable digital solutions.
+              Netu Techno helps businesses solve complex operational challenges and scale online revenue through custom software, intelligent automation, Amazon advertising & marketing services, and scalable digital solutions.
             </motion.p>
 
             {/* Supporting Text Card */}

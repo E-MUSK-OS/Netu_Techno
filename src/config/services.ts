@@ -4,7 +4,7 @@ export interface ServiceItem {
   title: string;
   shortDescription: string;
   summary: string;
-  iconName: "Code2" | "Layers" | "Workflow" | "ShoppingCart" | "Cpu" | "Cloud" | "Globe";
+  iconName: "Code2" | "Layers" | "Workflow" | "ShoppingCart" | "Cpu" | "Cloud" | "Globe" | "Megaphone";
   whoNeedsThis: string;
   problemsSolved: string[];
   whatWeDeliver: string[];
@@ -149,6 +149,49 @@ export const servicesData: ServiceItem[] = [
       "Accelerated partner onboarding through standardized API endpoints",
     ],
     technologies: ["REST APIs", "GraphQL", "Webhooks", "Redis Queues", "Node.js", "TypeScript"],
+    featured: true,
+  },
+  {
+    id: "amazon-advertising",
+    slug: "amazon-advertising-services",
+    title: "Amazon Advertising & Marketing Services",
+    shortDescription:
+      "Full-funnel Amazon Ads campaign management, Sponsored Products, Brands, Display, DSP programmatic media, and profit-driven ROAS scaling.",
+    summary:
+      "We provide end-to-end advertising management for brands, vendors, and marketplace sellers across the Amazon ecosystem. From algorithmic bid optimization and keyword harvesting to DSP programmatic retargeting and Amazon Marketing Cloud (AMC) attribution, we scale ad revenues while protecting profit margins.",
+    iconName: "Megaphone",
+    whoNeedsThis:
+      "Brand owners, manufacturers, enterprise marketplace sellers, and agencies looking to scale advertising revenue, improve ACOS/ROAS efficiency, launch new products profitably, and gain market share across Amazon marketplaces.",
+    problemsSolved: [
+      "High Advertising Cost of Sales (ACOS) eroding profitability across active campaigns",
+      "Wasted advertising spend on broad, irrelevant search queries and negative match leakages",
+      "Underutilized Sponsored Brands video, Sponsored Display, and Amazon DSP programmatic channels",
+      "Low conversion rates due to misaligned retail readiness, listing content, and ad traffic",
+    ],
+    whatWeDeliver: [
+      "Full-funnel campaign architecture across Sponsored Products, Sponsored Brands, and Sponsored Display",
+      "Amazon DSP (Demand-Side Platform) programmatic audience targeting and off-Amazon retargeting",
+      "Algorithmic bid adjustments, dayparting schedules, and continuous search-term harvesting",
+      "Listing conversion audit, A+ content review, and retail readiness alignment before scaling spend",
+      "Amazon Marketing Cloud (AMC) attribution modeling and custom weekly ROAS performance reporting",
+    ],
+    technicalApproach:
+      "We combine programmatic bid rules, search query volume modeling, and automated reporting pipelines via the Amazon Advertising API. Every campaign is segmented by customer intent (brand defense, competitor conquesting, category discovery) with strict budget allocation and hourly bid adjustments to maximize top-of-search conversion rates.",
+    businessOutcomes: [
+      "Measurable decrease in blended ACOS with elevated Return on Ad Spend (ROAS)",
+      "Accelerated organic search rankings fueled by targeted, high-converting ad velocity",
+      "Expanded brand visibility and category market share defense against competitors",
+      "Predictable advertising revenue scaling backed by transparent attribution reporting",
+    ],
+    technologies: [
+      "Amazon Ads API",
+      "Sponsored Products",
+      "Sponsored Brands",
+      "Sponsored Display",
+      "Amazon DSP",
+      "Amazon Marketing Cloud (AMC)",
+      "Amazon Brand Analytics",
+    ],
     featured: true,
   },
   {

@@ -15,16 +15,16 @@ import { ScrollDepthSection } from "@/components/shared/ScrollDepthSection";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Netu Techno — Software Solutions Built Around Your Business",
+  title: "Netu Techno — Software Solutions & Digital Advertising Built Around Your Business",
   description:
-    "Netu Techno helps businesses solve complex operational challenges through custom software, intelligent automation, and scalable digital solutions.",
+    "Netu Techno helps businesses solve complex operational challenges and scale revenue through custom software, intelligent automation, Amazon advertising & marketing services, and scalable digital solutions.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Netu Techno — Software Solutions Built Around Your Business",
+    title: "Netu Techno — Software Solutions & Digital Advertising Built Around Your Business",
     description:
-      "Netu Techno helps businesses solve complex operational challenges through custom software, intelligent automation, and scalable digital solutions.",
+      "Netu Techno helps businesses solve complex operational challenges and scale revenue through custom software, intelligent automation, Amazon advertising & marketing services, and scalable digital solutions.",
     url: siteConfig.url,
     siteName: siteConfig.name,
     images: [
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
         url: "/images/netu-techno-clean.png",
         width: 1200,
         height: 630,
-        alt: "Netu Techno — Software Solutions Built Around Your Business",
+        alt: "Netu Techno — Software Solutions & Digital Advertising",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Netu Techno — Software Solutions Built Around Your Business",
+    title: "Netu Techno — Software Solutions & Digital Advertising Built Around Your Business",
     description:
-      "Netu Techno helps businesses solve complex operational challenges through custom software, intelligent automation, and scalable digital solutions.",
+      "Netu Techno helps businesses solve complex operational challenges and scale revenue through custom software, intelligent automation, Amazon advertising & marketing services, and scalable digital solutions.",
     images: ["/images/netu-techno-clean.png"],
   },
 };
@@ -52,10 +52,10 @@ export default function HomePage() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "What software development services does Netu Techno provide?",
+        name: "What software and advertising services does Netu Techno provide?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Netu Techno specializes in custom software development, business process automation, API integrations, SaaS product engineering, custom & WordPress web development, and cloud DevOps solutions.",
+          text: "Netu Techno specializes in custom software development, Amazon advertising & marketing services, business process automation, API integrations, SaaS product engineering, custom & WordPress web development, and cloud DevOps solutions.",
         },
       },
       {

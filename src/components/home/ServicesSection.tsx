@@ -11,6 +11,7 @@ import {
   Cpu,
   Cloud,
   Globe,
+  Megaphone,
   ArrowRight,
 } from "lucide-react";
 
@@ -22,6 +23,7 @@ const iconMap = {
   Cpu,
   Cloud,
   Globe,
+  Megaphone,
 };
 
 export function ServicesSection() {
@@ -37,6 +39,14 @@ export function ServicesSection() {
     "custom-wordpress": [
       "Custom Themes & Native Gutenberg Blocks",
       "Sub-Second Speed & Hardened Security",
+    ],
+    "amazon-advertising-services": [
+      "Full-Funnel Campaign Architecture",
+      "ROAS & ACOS Optimization Algorithms",
+    ],
+    "amazon-advertising": [
+      "Full-Funnel Campaign Architecture",
+      "ROAS & ACOS Optimization Algorithms",
     ],
     "business-process-automation": [
       "Zero Data-Loss Retry Handlers",
@@ -60,11 +70,14 @@ export function ServicesSection() {
     ],
   };
 
-  // Exclude WordPress card from home page only (retains it on /services)
+  // Exclude WordPress and E-Commerce Technology from home page (both remain fully accessible on /services)
+  // replacing E-Commerce Technology with Amazon Advertising & Marketing Services on the home page.
   const homeServices = servicesData.filter(
     (service) =>
       service.id !== "custom-wordpress" &&
-      service.slug !== "custom-wordpress-development"
+      service.slug !== "custom-wordpress-development" &&
+      service.id !== "ecommerce-tech" &&
+      service.slug !== "ecommerce-technology"
   );
 
   return (

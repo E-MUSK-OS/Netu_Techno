@@ -100,7 +100,7 @@ export function Footer() {
               Capabilities
             </h3>
             <ul className="space-y-2.5 text-sm">
-              {servicesData.slice(0, 7).map((service) => (
+              {servicesData.map((service) => (
                 <li key={service.id}>
                   <Link
                     href={`/services#${service.slug}`}

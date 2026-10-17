@@ -13,6 +13,7 @@ import {
   ShoppingCart,
   Cpu,
   Cloud,
+  Megaphone,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -24,6 +25,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   ShoppingCart,
   Cpu,
   Cloud,
+  Megaphone,
   Sparkles,
 };
 
@@ -38,6 +40,10 @@ const defaultServiceMetadata: Record<
   "Custom & WordPress Web Development": {
     subtitle: "Bespoke themes & high-speed CMS platforms",
     iconName: "Globe",
+  },
+  "Amazon Advertising & Marketing Services": {
+    subtitle: "Amazon PPC, DSP, ROAS optimization & brand scaling",
+    iconName: "Megaphone",
   },
   "SaaS Product Engineering": {
     subtitle: "Multi-tenant cloud architectures & subscriptions",

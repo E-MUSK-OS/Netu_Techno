@@ -7,9 +7,9 @@ export interface NavItem {
 export const siteConfig = {
   name: "Netu Techno",
   legalName: "Netu Techno Solutions",
-  tagline: "Software Solutions Built Around Your Business",
+  tagline: "Software & Digital Advertising Solutions Built Around Your Business",
   description:
-    "Netu Techno helps businesses solve complex operational challenges through custom software, intelligent automation, and scalable digital solutions.",
+    "Netu Techno helps businesses solve complex operational challenges and scale online revenue through custom software, intelligent automation, Amazon advertising & marketing services, and resilient digital architectures.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://netutechno.com",
   ogImage: "/images/netu-techno-clean.png",
   contact: {
@@ -25,12 +25,12 @@ export const siteConfig = {
     twitter: "https://x.com/netutechno",
   },
   placeholders: {
-    specificSoftwareNiche: "enterprise workflow automation & scalable web platforms",
-    targetClientIndustry: "fast-scaling businesses, logistics, and digital enterprises",
+    specificSoftwareNiche: "enterprise workflow automation, Amazon Ads optimization & scalable web platforms",
+    targetClientIndustry: "fast-scaling businesses, e-commerce brands, logistics, and digital enterprises",
     founderName: "Netu Techno Engineering Guild",
     founderRole: "Principal Systems Architects & Senior Engineers",
-    verifiedExperience: "Over a decade of combined engineering excellence architecting resilient full-stack systems, secure microservices, and automated workflows.",
-    technicalSpecializations: "Distributed systems, REST & GraphQL APIs, event-driven architecture, Next.js, TypeScript, PostgreSQL, and cloud deployments.",
+    verifiedExperience: "Over a decade of combined engineering excellence architecting resilient full-stack systems, secure microservices, automated workflows, and data-driven ad systems.",
+    technicalSpecializations: "Amazon Ads API & DSP, distributed systems, REST & GraphQL APIs, event-driven architecture, Next.js, TypeScript, PostgreSQL, and cloud deployments.",
   },
   navigation: [
     { title: "Home", href: "/" },

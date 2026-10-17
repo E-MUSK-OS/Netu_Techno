@@ -13,6 +13,7 @@ import {
   Cpu,
   Cloud,
   Globe,
+  Megaphone,
   CheckCircle2,
   AlertCircle,
   ArrowRight,
@@ -21,16 +22,16 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Software Engineering & Automation Services",
+  title: "Software Engineering, Automation & Amazon Ads Services",
   description:
-    "Explore practical software solutions that help businesses improve workflows, connect systems, and develop scalable digital products. Custom development, SaaS engineering, APIs, and cloud optimization.",
+    "Explore practical software and digital advertising solutions that help businesses grow, optimize Amazon Ads campaigns, connect systems, and scale digital products. Custom development, Amazon Ads management, SaaS engineering, and cloud optimization.",
   alternates: {
     canonical: "/services",
   },
   openGraph: {
-    title: "Software Engineering & Automation Services | Netu Techno",
+    title: "Software Engineering, Automation & Amazon Ads Services | Netu Techno",
     description:
-      "Explore practical software solutions that help businesses improve workflows, connect systems, and develop scalable digital products. Custom development, SaaS engineering, APIs, and cloud optimization.",
+      "Explore practical software and digital advertising solutions that help businesses grow, optimize Amazon Ads campaigns, connect systems, and scale digital products. Custom development, Amazon Ads management, SaaS engineering, and cloud optimization.",
     url: `${siteConfig.url}/services`,
     siteName: siteConfig.name,
     images: [
@@ -38,15 +39,15 @@ export const metadata: Metadata = {
         url: "/images/netu-techno-clean.png",
         width: 1200,
         height: 630,
-        alt: "Netu Techno Software Services",
+        alt: "Netu Techno Software & Advertising Services",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Software Engineering & Automation Services | Netu Techno",
+    title: "Software Engineering, Automation & Amazon Ads Services | Netu Techno",
     description:
-      "Explore practical software solutions that help businesses improve workflows, connect systems, and develop scalable digital products.",
+      "Explore practical software and digital advertising solutions that help businesses grow, optimize Amazon Ads campaigns, connect systems, and scale digital products.",
     images: ["/images/netu-techno-clean.png"],
   },
 };
@@ -59,6 +60,7 @@ const iconMap = {
   Cpu,
   Cloud,
   Globe,
+  Megaphone,
 };
 
 export default function ServicesPage() {
