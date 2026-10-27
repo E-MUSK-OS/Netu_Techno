@@ -84,9 +84,9 @@ export function ServicesSection() {
     <section className="py-20 lg:py-28 bg-[#EFEBE1] border-b border-[#DFD9CD]">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          badge="Core Engineering Capabilities"
-          title="The Right Technology for the Problem at Hand"
-          description="We do not push one-size-fits-all frameworks. We engineer dependable solutions designed around your specific technical constraints and business goals."
+          badge="Core IT & Software Capabilities"
+          title="IT Services & Software Solutions Built for Scale"
+          description="Netu Techno (Netutechno) delivers end-to-end IT services, custom software engineering, and intelligent business automation designed around your specific technical constraints and business goals."
         />
 
         <FadeInStagger className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -184,7 +184,7 @@ export function ServicesSection() {
                 Need a specialized or hybrid technical stack?
               </h4>
               <p className="text-sm text-slate-600 max-w-2xl leading-relaxed">
-                We frequently handle multi-system integrations, data transformations, and custom cloud pipelines. Discuss your operational requirements with our lead engineers.
+                We frequently handle multi-system integrations, data transformations, and custom cloud pipelines. Discuss your operational requirements with our lead engineers at Netu Techno (Netutechno).
               </p>
             </div>
             <Link

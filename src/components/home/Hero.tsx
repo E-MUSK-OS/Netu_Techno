@@ -70,7 +70,7 @@ export function Hero() {
             <motion.div variants={itemVariants}>
               <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-sm font-semibold uppercase tracking-wider bg-white/90 text-amber-950 border border-amber-300/80 shadow-2xs hover:shadow-xs transition-shadow">
                 <NetuLogo variant="emblem" height={18} priority={false} />
-                <span>Full-Cycle Software Engineering</span>
+                <span>Premier IT & Software Engineering Company</span>
               </div>
             </motion.div>
 
@@ -79,7 +79,7 @@ export function Hero() {
               variants={itemVariants}
               className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#273138] tracking-tight leading-[1.14] sm:leading-[1.12]"
             >
-              Software Solutions Built Around{" "}
+              Netu Techno — Software Solutions Built Around{" "}
               <span className="text-gold-gradient">Your Business</span>
             </motion.h1>
 
@@ -88,7 +88,7 @@ export function Hero() {
               variants={itemVariants}
               className="text-lg sm:text-xl text-slate-700 leading-relaxed font-normal max-w-2xl"
             >
-              Netu Techno helps businesses solve complex operational challenges and scale online revenue through custom software, intelligent automation, Amazon advertising & marketing services, and scalable digital solutions.
+              <strong className="font-semibold text-[#181F28]">Netu Techno</strong> (also known as <strong className="font-semibold text-[#181F28]">Netutechno</strong>) is an IT and custom software development company based in Surat, Gujarat. We help businesses solve complex operational challenges and scale online revenue through custom software, intelligent automation, modern web platforms, and resilient digital architectures.
             </motion.p>
 
             {/* Supporting Text Card */}

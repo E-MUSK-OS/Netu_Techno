@@ -7,9 +7,21 @@ export interface NavItem {
 export const siteConfig = {
   name: "Netu Techno",
   legalName: "Netu Techno Solutions",
-  tagline: "Software & Digital Advertising Solutions Built Around Your Business",
+  alternateNames: [
+    "Netutechno",
+    "netutechno",
+    "Netu Techno",
+    "NETU TECHNO",
+    "NETUTECHNO",
+    "netu techno",
+    "NetuTechno",
+    "netutechno.com",
+    "www.netutechno.com",
+    "Netu Techno Solutions",
+  ],
+  tagline: "IT & Custom Software Development Company",
   description:
-    "Netu Techno helps businesses solve complex operational challenges and scale online revenue through custom software, intelligent automation, Amazon advertising & marketing services, and resilient digital architectures.",
+    "Netu Techno (Netutechno) is a premier IT and custom software development company in Surat, Gujarat. We build scalable software, web applications, SaaS platforms, intelligent automation, and cloud digital solutions.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://netutechno.com",
   ogImage: "/images/netu-techno-clean.png",
   contact: {
@@ -25,7 +37,7 @@ export const siteConfig = {
     twitter: "https://x.com/netutechno",
   },
   placeholders: {
-    specificSoftwareNiche: "enterprise workflow automation, Amazon Ads optimization & scalable web platforms",
+    specificSoftwareNiche: "enterprise workflow automation, Amazon Ads optimization, custom web platforms & IT consulting",
     targetClientIndustry: "fast-scaling businesses, e-commerce brands, logistics, and digital enterprises",
     founderName: "Netu Techno Engineering Guild",
     founderRole: "Principal Systems Architects & Senior Engineers",

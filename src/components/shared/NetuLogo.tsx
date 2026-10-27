@@ -20,7 +20,7 @@ export function NetuLogo({
       <div className={cn("relative inline-flex items-center", className)}>
         <Image
           src="/images/netu-emblem.png"
-          alt="Netu Techno Emblem"
+          alt="Netu Techno (Netutechno) Emblem Logo"
           width={Math.round(height * (220 / 230))}
           height={height}
           priority={priority}
@@ -35,7 +35,7 @@ export function NetuLogo({
       <div className={cn("relative inline-flex flex-col items-center", className)}>
         <Image
           src="/images/netu-techno-clean.png"
-          alt="Netu Techno — Software Solutions"
+          alt="Netu Techno (Netutechno) — IT & Software Solutions"
           width={Math.round(height * (901 / 557))}
           height={height}
           priority={priority}
@@ -50,7 +50,7 @@ export function NetuLogo({
       <div className={cn("relative inline-flex flex-col items-center", className)}>
         <Image
           src="/images/netu-techno-logo-dark.png"
-          alt="Netu Techno — Software Solutions"
+          alt="Netu Techno (Netutechno) — IT & Software Solutions"
           width={Math.round(height * (901 / 557))}
           height={height}
           priority={priority}
@@ -65,7 +65,7 @@ export function NetuLogo({
       <div className={cn("relative inline-flex items-center", className)}>
         <Image
           src="/images/netu-horizontal-dark.png"
-          alt="Netu Techno — Software Solutions"
+          alt="Netu Techno (Netutechno) — IT & Software Development Company"
           width={Math.round(height * (375 / 60))}
           height={height}
           priority={priority}
@@ -80,7 +80,7 @@ export function NetuLogo({
     <div className={cn("relative inline-flex items-center", className)}>
       <Image
         src="/images/netu-horizontal.png"
-        alt="Netu Techno — Software Solutions"
+        alt="Netu Techno (Netutechno) — IT & Software Development Company"
         width={Math.round(height * (375 / 60))}
         height={height}
         priority={priority}

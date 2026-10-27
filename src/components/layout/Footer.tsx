@@ -23,7 +23,7 @@ export function Footer() {
           <div className="space-y-1.5 text-left">
             <div className="flex items-center gap-2 text-sm font-mono text-[#E5C365]">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="uppercase tracking-wider">Enterprise Architecture Scoping 24/7</span>
+              <span className="uppercase tracking-wider">IT & Software Architecture Scoping 24/7</span>
             </div>
             <h4 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               Ready to eliminate your operational software bottlenecks?
@@ -48,18 +48,18 @@ export function Footer() {
               href="/"
               onClick={() => scrollToTop(true)}
               className="inline-flex items-center group transition-opacity hover:opacity-90"
-              aria-label="Netu Techno — Back to Homepage"
+              aria-label="Netu Techno (Netutechno) — Back to Homepage"
             >
               <NetuLogo variant="horizontal-dark" height={40} priority={false} />
             </Link>
 
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              Engineering purpose-built software, business automation pipelines, and resilient API integrations designed specifically around your operational goals.
+              <strong className="text-slate-200">Netu Techno (Netutechno)</strong> is a premier IT and custom software development company based in Surat, Gujarat. We engineer purpose-built software, business automation pipelines, and resilient digital architectures designed around your operational goals.
             </p>
 
             <div className="pt-2 text-sm text-slate-500">
               <span className="inline-block px-3 py-1.5 rounded-md bg-[#18202A] border border-slate-800 text-[#E5C365] font-semibold">
-                Verified B2B Engineering Guild
+                IT & Software Development Company • Surat, Gujarat
               </span>
             </div>
           </div>
@@ -100,74 +100,60 @@ export function Footer() {
               Capabilities
             </h3>
             <ul className="space-y-2.5 text-sm">
-              {servicesData.map((service) => (
+              {servicesData.slice(0, 5).map((service) => (
                 <li key={service.id}>
                   <Link
                     href={`/services#${service.slug}`}
-                    className="text-slate-400 hover:text-[#E5C365] transition-colors duration-150"
+                    onClick={() => scrollToTop(true)}
+                    className="text-slate-400 hover:text-white transition-colors duration-150"
                   >
                     {service.title}
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/services"
-                  className="text-slate-400 hover:text-white text-sm underline underline-offset-4"
-                >
-                  View all services →
-                </Link>
-              </li>
             </ul>
           </div>
 
           {/* Contact Details */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-white uppercase tracking-wider">
-              Direct Contact
+              Office & Contact
             </h3>
             <ul className="space-y-3 text-sm text-slate-400">
               <li className="flex items-start gap-2.5">
-                <Mail className="w-4 h-4 text-[#C59B27] shrink-0 mt-0.5" />
-                <div>
-                  <span className="block text-[11px] text-slate-500 uppercase">Work Email</span>
-                  <a
-                    href={`mailto:${siteConfig.contact.email}`}
-                    className="text-slate-300 hover:text-white hover:underline"
-                  >
-                    {siteConfig.contact.email}
-                  </a>
-                </div>
+                <MapPin className="w-4 h-4 text-[#C59B27] shrink-0 mt-1" />
+                <span className="leading-snug">{siteConfig.contact.address}</span>
               </li>
-              <li className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 text-[#C59B27] shrink-0 mt-0.5" />
-                <div>
-                  <span className="block text-[11px] text-slate-500 uppercase">Direct Phone</span>
-                  <span className="text-slate-300">{siteConfig.contact.phone}</span>
-                </div>
+              <li className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-[#C59B27] shrink-0" />
+                <a
+                  href={`tel:${siteConfig.contact.phone.replace(/[^0-9+]/g, "")}`}
+                  className="hover:text-white transition-colors font-mono"
+                >
+                  {siteConfig.contact.phone}
+                </a>
               </li>
-              <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#C59B27] shrink-0 mt-0.5" />
-                <div>
-                  <span className="block text-[11px] text-slate-500 uppercase">Registered Office</span>
-                  <span className="text-slate-300">{siteConfig.contact.address}</span>
-                </div>
+              <li className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-[#C59B27] shrink-0" />
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="hover:text-white transition-colors font-mono"
+                >
+                  {siteConfig.contact.email}
+                </a>
               </li>
               <li className="flex items-start gap-2.5">
                 <Clock className="w-4 h-4 text-[#C59B27] shrink-0 mt-0.5" />
-                <div>
-                  <span className="block text-[11px] text-slate-500 uppercase">Business Hours</span>
-                  <span className="text-slate-300">{siteConfig.contact.workingHours}</span>
-                </div>
+                <span className="text-xs text-slate-400">{siteConfig.contact.workingHours}</span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 text-center sm:text-left">
+        {/* Footer Bottom Bar */}
+        <div className="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 text-center sm:text-left">
           <p>
-            © {currentYear} {siteConfig.name}. All rights reserved. Built with clean, reliable software engineering.
+            © {currentYear} {siteConfig.name} (Netutechno). All rights reserved. IT & Custom Software Development Company, Surat, Gujarat.
           </p>
           <div className="flex flex-wrap items-center justify-center sm:justify-end gap-5 sm:gap-6">
             <a

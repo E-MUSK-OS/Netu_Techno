@@ -3,7 +3,7 @@ import { siteConfig } from "@/config/site";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { CTASection } from "@/components/shared/CTASection";
 import { FadeIn, FadeInStagger, FadeInStaggerItem } from "@/components/shared/Motion";
-import { ScrollDepthSection } from "@/components/shared/ScrollDepthSection";
+import { ScrollDepthSection } from "@/components/shared/Motion";
 import {
   Compass,
   Layers,
@@ -15,32 +15,46 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Netu Techno — Engineering Philosophy & Principles",
+  title: "About Netu Techno (Netutechno) — Premier IT & Software Development Company",
   description:
-    "Netu Techno is a software solutions company focused on helping businesses turn technical challenges into practical digital systems with clean architecture and transparent collaboration.",
+    "Learn about Netu Techno (also known as Netutechno / NETUTECHNO), a trusted IT and custom software development company in Surat, Gujarat. Discover our engineering philosophy, enterprise solutions, and technical guild.",
+  keywords: [
+    "About Netu Techno",
+    "Netutechno",
+    "netutechno",
+    "Netu Techno",
+    "NETU TECHNO",
+    "NETUTECHNO",
+    "NetuTechno",
+    "IT company in Surat",
+    "software company in Surat",
+    "software development company Gujarat",
+    "IT solutions provider Surat",
+    "custom software development",
+  ],
   alternates: {
     canonical: "/about",
   },
   openGraph: {
-    title: "About Netu Techno — Engineering Philosophy & Principles",
+    title: "About Netu Techno (Netutechno) — Premier IT & Software Development Company",
     description:
-      "Netu Techno is a software solutions company focused on helping businesses turn technical challenges into practical digital systems with clean architecture and transparent collaboration.",
+      "Learn about Netu Techno (Netutechno), a trusted IT and custom software development company in Surat, Gujarat.",
     url: `${siteConfig.url}/about`,
-    siteName: siteConfig.name,
+    siteName: `${siteConfig.name} (Netutechno)`,
     images: [
       {
         url: "/images/netu-techno-clean.png",
         width: 1200,
         height: 630,
-        alt: "About Netu Techno",
+        alt: "About Netu Techno (Netutechno)",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Netu Techno — Engineering Philosophy & Principles",
+    title: "About Netu Techno (Netutechno) — Premier IT & Software Development Company",
     description:
-      "Netu Techno is a software solutions company focused on helping businesses turn technical challenges into practical digital systems with clean architecture and transparent collaboration.",
+      "Learn about Netu Techno (Netutechno), a trusted IT and custom software development company in Surat, Gujarat.",
     images: ["/images/netu-techno-clean.png"],
   },
 };
@@ -69,12 +83,21 @@ export default function AboutPage() {
       {
         "@type": "AboutPage",
         "@id": `${siteConfig.url}/about#about`,
-        name: "About Netu Techno",
+        name: "About Netu Techno (Netutechno)",
         description: siteConfig.description,
         url: `${siteConfig.url}/about`,
         mainEntity: {
-          "@type": "Organization",
+          "@type": ["Organization", "ITService"],
           name: siteConfig.name,
+          alternateName: [
+            "Netutechno",
+            "netutechno",
+            "Netu Techno",
+            "NETU TECHNO",
+            "NETUTECHNO",
+            "NetuTechno",
+            "Netu Techno Solutions",
+          ],
           url: siteConfig.url,
         },
       },
@@ -123,15 +146,15 @@ export default function AboutPage() {
         <section className="bg-gradient-to-b from-[#EFEBE1] via-[#F4F1E8] to-[#EFEBE1] pt-16 pb-20 border-b border-[#DFD9CD]">
           <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeading
-              badge="Company & Engineering Culture"
-              title="Technology With a Clear Business Purpose"
-              description="Netu Techno is a software solutions company focused on helping businesses turn technical challenges into practical digital systems."
+              badge="About Netu Techno (Netutechno)"
+              title="IT & Custom Software Development Company Built on Practical Engineering"
+              description="Netu Techno (also known as Netutechno / NETU TECHNO) is a premier IT and software solutions company based in Surat, Gujarat, focused on helping businesses turn operational challenges into resilient digital systems."
               titleAs="h1"
             />
 
             <div className="mt-12 max-w-5xl mx-auto text-center">
               <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
-                We founded Netu Techno on a straightforward premise: software should make businesses more resilient, productive, and scalable — not burdened by unnecessary complexity or vendor lock-in. We combine rigorous software engineering with practical business understanding.
+                Headquartered in Surat, Gujarat, <strong className="text-[#181F28]">Netu Techno (Netutechno)</strong> was founded on a straightforward premise: modern IT and software engineering should make businesses more resilient, productive, and scalable — not burdened by unnecessary complexity, bloated dependencies, or vendor lock-in. We combine rigorous software engineering with practical business understanding to build long-term digital value.
               </p>
             </div>
           </div>
@@ -155,7 +178,7 @@ export default function AboutPage() {
                       Simplify Complex Operations Through Useful, Dependable Software Solutions
                     </h2>
                     <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                      We exist to eliminate the friction holding operational teams back. By automating repetitive tasks, connecting siloed business platforms, and creating purpose-built software tools, we empower companies to operate with maximum clarity and velocity.
+                      At Netu Techno (Netutechno), we exist to eliminate the friction holding operational teams back. By automating repetitive tasks, connecting siloed business platforms, and creating purpose-built software tools, we empower companies to operate with maximum clarity and velocity.
                     </p>
                   </div>
 
@@ -253,7 +276,7 @@ export default function AboutPage() {
             <SectionHeading
               badge="Leadership & Expertise"
               title="Technical Leadership Grounded in Practical Engineering"
-              description="Netu Techno is led by software engineers with extensive background in full-stack architecture, systems integration, and business workflow design."
+              description="Netu Techno (Netutechno) is led by software engineers with extensive background in full-stack architecture, systems integration, and business workflow design."
             />
 
             <FadeIn direction="up" className="mt-16 max-w-3xl mx-auto">
@@ -361,7 +384,7 @@ export default function AboutPage() {
       <ScrollDepthSection isLast>
         <CTASection
           headline="Let's Solve the Right Problem First."
-          description="Schedule a technical discussion with our engineering leads to explore your business requirements, architecture options, and feasibility."
+          description="Schedule a technical discussion with Netu Techno (Netutechno) engineering leads to explore your business requirements, architecture options, and feasibility."
           primaryButtonText="Talk to Our Team"
           primaryButtonHref="/contact"
         />

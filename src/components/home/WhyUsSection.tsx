@@ -51,9 +51,9 @@ export function WhyUsSection() {
     <section className="py-20 lg:py-28 bg-[#EFEBE1] border-b border-[#DFD9CD]">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          badge="Why Netu Techno"
-          title="Engineering Decisions That Serve Business Goals"
-          description="We evaluate software through an engineering lens grounded in business practicality. Here is how our approach protects your timeline, budget, and operational sanity."
+          badge="Why Choose Netu Techno (Netutechno)"
+          title="Surat's Trusted IT & Software Engineering Partner"
+          description="At Netu Techno (Netutechno), we evaluate software through an engineering lens grounded in business practicality. Here is how our approach as a premier software and IT company protects your timeline, budget, and operational sanity."
         />
 
         <FadeInStagger className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-8">

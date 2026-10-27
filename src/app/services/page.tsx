@@ -22,32 +22,48 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Software Engineering, Automation & Amazon Ads Services",
+  title: "IT Services & Software Engineering Solutions | Netu Techno (Netutechno)",
   description:
-    "Explore practical software and digital advertising solutions that help businesses grow, optimize Amazon Ads campaigns, connect systems, and scale digital products. Custom development, Amazon Ads management, SaaS engineering, and cloud optimization.",
+    "Explore IT services and custom software solutions by Netu Techno (Netutechno) in Surat, Gujarat. Custom software development, WordPress engineering, SaaS products, cloud DevOps, API integration, and business automation.",
+  keywords: [
+    "IT services Surat",
+    "IT services company Gujarat",
+    "software development services",
+    "Netutechno services",
+    "Netu Techno",
+    "netutechno",
+    "NETU TECHNO",
+    "custom software development",
+    "SaaS product engineering",
+    "WordPress development company",
+    "API integration services",
+    "business process automation",
+    "cloud DevOps solutions",
+    "full stack IT development",
+  ],
   alternates: {
     canonical: "/services",
   },
   openGraph: {
-    title: "Software Engineering, Automation & Amazon Ads Services | Netu Techno",
+    title: "IT Services & Software Engineering Solutions | Netu Techno (Netutechno)",
     description:
-      "Explore practical software and digital advertising solutions that help businesses grow, optimize Amazon Ads campaigns, connect systems, and scale digital products. Custom development, Amazon Ads management, SaaS engineering, and cloud optimization.",
+      "Explore IT services and custom software solutions by Netu Techno (Netutechno). Custom software, SaaS, API integrations, and cloud architectures.",
     url: `${siteConfig.url}/services`,
-    siteName: siteConfig.name,
+    siteName: `${siteConfig.name} (Netutechno)`,
     images: [
       {
         url: "/images/netu-techno-clean.png",
         width: 1200,
         height: 630,
-        alt: "Netu Techno Software & Advertising Services",
+        alt: "Netu Techno (Netutechno) IT & Software Services",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Software Engineering, Automation & Amazon Ads Services | Netu Techno",
+    title: "IT Services & Software Engineering Solutions | Netu Techno (Netutechno)",
     description:
-      "Explore practical software and digital advertising solutions that help businesses grow, optimize Amazon Ads campaigns, connect systems, and scale digital products.",
+      "Explore IT services and custom software solutions by Netu Techno (Netutechno).",
     images: ["/images/netu-techno-clean.png"],
   },
 };
@@ -86,7 +102,7 @@ export default function ServicesPage() {
       },
       {
         "@type": "ItemList",
-        name: "Netu Techno Software Engineering Services",
+        name: "Netu Techno (Netutechno) IT & Software Engineering Services",
         itemListElement: servicesData.map((s, idx) => ({
           "@type": "Service",
           position: idx + 1,
@@ -95,8 +111,15 @@ export default function ServicesPage() {
           url: `${siteConfig.url}/services#${s.slug}`,
           serviceType: s.title,
           provider: {
-            "@type": "Organization",
+            "@type": ["Organization", "ITService"],
             name: siteConfig.name,
+            alternateName: [
+              "Netutechno",
+              "netutechno",
+              "Netu Techno",
+              "NETU TECHNO",
+              "NETUTECHNO",
+            ],
             url: siteConfig.url,
           },
         })),
@@ -116,9 +139,9 @@ export default function ServicesPage() {
         <section className="bg-gradient-to-b from-[#EFEBE1] via-[#F4F1E8] to-[#EFEBE1] pt-16 pb-20 border-b border-[#DFD9CD]">
           <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeading
-              badge="Engineering Capabilities"
-              title="Software Services Designed to Solve Real Business Problems"
-              description="Explore practical software solutions that help businesses improve workflows, connect systems, and develop scalable digital products."
+              badge="IT & Software Engineering Capabilities"
+              title="IT Services & Software Solutions Designed to Solve Real Business Problems"
+              description="Explore practical IT and software solutions by Netu Techno (Netutechno) that help businesses improve workflows, connect systems, and develop scalable digital products."
               titleAs="h1"
             />
 
@@ -305,7 +328,7 @@ export default function ServicesPage() {
             </h2>
 
             <p className="mt-4 text-base text-slate-700 max-w-2xl mx-auto leading-relaxed">
-              Most business challenges involve a combination of legacy databases, third-party APIs, and custom internal workflows. You do not need to diagnose the exact technical architecture yourself. Share your operational objectives, and our engineering team will recommend the most practical, cost-effective approach.
+              Most business challenges involve a combination of legacy databases, third-party APIs, and custom internal workflows. You do not need to diagnose the exact technical architecture yourself. Share your operational objectives, and the Netu Techno (Netutechno) engineering team will recommend the most practical, cost-effective approach.
             </p>
 
             <div className="mt-8 flex justify-center">

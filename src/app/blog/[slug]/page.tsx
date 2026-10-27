@@ -43,7 +43,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${post.title} — Netu Techno Engineering Insights`,
+    title: `${post.title} — Netu Techno (Netutechno) Engineering Insights`,
     description: post.excerpt,
     alternates: {
       canonical: `/blog/${post.slug}`,
@@ -52,7 +52,7 @@ export async function generateMetadata({
       title: `${post.title} | Netu Techno Insights`,
       description: post.excerpt,
       url: `${siteConfig.url}/blog/${post.slug}`,
-      siteName: siteConfig.name,
+      siteName: `${siteConfig.name} (Netutechno)`,
       type: "article",
       publishedTime: post.publishedAt,
       authors: [post.author.name],

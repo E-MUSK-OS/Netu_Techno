@@ -3,8 +3,8 @@ import { siteConfig } from "@/config/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${siteConfig.name} — ${siteConfig.tagline}`,
-    short_name: siteConfig.name,
+    name: "Netu Techno (Netutechno) — IT & Software Development Company",
+    short_name: "Netutechno",
     description: siteConfig.description,
     start_url: "/",
     display: "standalone",
@@ -12,13 +12,13 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#EFEBE1",
     icons: [
       {
-        src: "/images/netu-emblem.png",
+        src: "/icon-192.png",
         sizes: "192x192",
         type: "image/png",
         purpose: "maskable",
       },
       {
-        src: "/images/netu-emblem.png",
+        src: "/icon-512.png",
         sizes: "512x512",
         type: "image/png",
         purpose: "any",
@@ -26,4 +26,3 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
   };
 }
-

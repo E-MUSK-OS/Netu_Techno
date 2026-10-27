@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { SectionHeading } from "@/components/shared/SectionHeading";
@@ -15,32 +14,45 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact Us — Start a Project Discussion",
+  title: "Contact Netu Techno (Netutechno) — IT & Software Company in Surat",
   description:
-    "Share your project requirements or business challenge. Netu Techno engineers will review your needs and determine the appropriate technical solution.",
+    "Get in touch with Netu Techno (also known as Netutechno / NETUTECHNO) for custom software development, IT services, and digital solutions. Located in Surat, Gujarat 394107.",
+  keywords: [
+    "Contact Netu Techno",
+    "Netutechno contact",
+    "netutechno",
+    "Netu Techno",
+    "NETU TECHNO",
+    "NETUTECHNO",
+    "Netu Techno Surat address",
+    "IT company in Surat contact",
+    "software company contact Surat",
+    "Netu Techno phone number",
+    "Netu Techno email",
+  ],
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
-    title: "Contact Us — Start a Project Discussion | Netu Techno",
+    title: "Contact Netu Techno (Netutechno) — IT & Software Company in Surat",
     description:
-      "Share your project requirements or business challenge. Netu Techno engineers will review your needs and determine the appropriate technical solution.",
+      "Get in touch with Netu Techno (Netutechno) for custom software development, IT services, and digital solutions in Surat, Gujarat.",
     url: `${siteConfig.url}/contact`,
-    siteName: siteConfig.name,
+    siteName: `${siteConfig.name} (Netutechno)`,
     images: [
       {
         url: "/images/netu-techno-clean.png",
         width: 1200,
         height: 630,
-        alt: "Contact Netu Techno",
+        alt: "Contact Netu Techno (Netutechno)",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Us — Start a Project Discussion | Netu Techno",
+    title: "Contact Netu Techno (Netutechno) — IT & Software Company in Surat",
     description:
-      "Share your project requirements or business challenge. Netu Techno engineers will review your needs and determine the appropriate technical solution.",
+      "Get in touch with Netu Techno (Netutechno) for custom software development and IT services.",
     images: ["/images/netu-techno-clean.png"],
   },
 };
@@ -69,12 +81,20 @@ export default function ContactPage() {
       {
         "@type": "ContactPage",
         "@id": `${siteConfig.url}/contact#contact`,
-        name: "Contact Netu Techno",
-        description: "Submit project requirements or business automation inquiries.",
+        name: "Contact Netu Techno (Netutechno)",
+        description: "Submit project requirements or business automation inquiries to Netu Techno (Netutechno).",
         url: `${siteConfig.url}/contact`,
         mainEntity: {
-          "@type": "ProfessionalService",
+          "@type": ["ProfessionalService", "ITService"],
           name: siteConfig.name,
+          alternateName: [
+            "Netutechno",
+            "netutechno",
+            "Netu Techno",
+            "NETU TECHNO",
+            "NETUTECHNO",
+            "NetuTechno",
+          ],
           email: siteConfig.contact.email,
           telephone: siteConfig.contact.phone,
           address: {
@@ -117,7 +137,7 @@ export default function ContactPage() {
             <SectionHeading
               badge="Direct Engineering Inquiries"
               title="Tell Us What You Need to Solve"
-              description="Share your project requirements or business challenge. We'll review the information and determine the appropriate next step."
+              description="Share your project requirements with Netu Techno (Netutechno). We will evaluate your technical specifications and provide a practical roadmap."
               titleAs="h1"
             />
           </div>
@@ -147,7 +167,7 @@ export default function ContactPage() {
                   </span>
                 </div>
                 <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                  For formal RFPs, architecture reviews, or direct inquiries, reach out through our official communication channels:
+                  For formal RFPs, architecture reviews, or direct inquiries with Netu Techno (Netutechno), reach out through our official channels:
                 </p>
 
                 <div className="space-y-4 text-sm text-slate-700">

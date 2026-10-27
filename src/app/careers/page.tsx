@@ -4,36 +4,49 @@ import { careersData } from "@/config/careers";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { CTASection } from "@/components/shared/CTASection";
 import { CareersClient } from "@/components/careers/CareersClient";
-import { FadeIn, ScrollDepthSection } from "@/components/shared/Motion";
+import { ScrollDepthSection } from "@/components/shared/Motion";
 
 export const metadata: Metadata = {
-  title: "Careers — Join the Engineering Guild",
+  title: "Careers at Netu Techno (Netutechno) — IT & Software Engineering Jobs in Surat",
   description:
-    "Join Netu Techno as a Frontend Developer, Backend Developer, or Full Stack Developer. Build clean, resilient, high-performance software systems in an engineering-first culture.",
+    "Join Netu Techno (also known as Netutechno / NETUTECHNO) in Surat, Gujarat. Hiring Frontend Developers, Backend Developers, and Full Stack Engineers for high-impact software systems.",
+  keywords: [
+    "Netu Techno careers",
+    "Netutechno jobs",
+    "netutechno",
+    "Netu Techno",
+    "NETU TECHNO",
+    "NETUTECHNO",
+    "IT jobs in Surat",
+    "software developer jobs Surat",
+    "frontend developer jobs Gujarat",
+    "backend developer jobs Surat",
+    "full stack engineer careers Surat",
+  ],
   alternates: {
     canonical: "/careers",
   },
   openGraph: {
-    title: "Engineering Careers at Netu Techno",
+    title: "Careers at Netu Techno (Netutechno) — IT & Software Jobs in Surat",
     description:
-      "We are hiring Frontend Developer, Backend Developer, and Full Stack Developer roles. Join our team in Surat, Gujarat.",
+      "We are hiring Frontend Developers, Backend Developers, and Full Stack Developers. Join Netu Techno (Netutechno) in Surat, Gujarat.",
     url: `${siteConfig.url}/careers`,
-    siteName: siteConfig.name,
+    siteName: `${siteConfig.name} (Netutechno)`,
     type: "website",
     images: [
       {
         url: "/images/netu-techno-clean.png",
         width: 1200,
         height: 630,
-        alt: "Careers at Netu Techno",
+        alt: "Careers at Netu Techno (Netutechno)",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Engineering Careers at Netu Techno",
+    title: "Careers at Netu Techno (Netutechno) — IT & Software Jobs in Surat",
     description:
-      "We are hiring Frontend Developer, Backend Developer, and Full Stack Developer roles. Join our team in Surat, Gujarat.",
+      "We are hiring Frontend Developers, Backend Developers, and Full Stack Developers. Join Netu Techno (Netutechno) in Surat, Gujarat.",
     images: ["/images/netu-techno-clean.png"],
   },
 };
@@ -61,7 +74,7 @@ export default function CareersPage() {
       },
       {
         "@type": "ItemList",
-        name: "Open Engineering Positions at Netu Techno",
+        name: "Open IT & Engineering Positions at Netu Techno (Netutechno)",
         itemListElement: careersData.map((job, idx) => ({
           "@type": "JobPosting",
           position: idx + 1,
@@ -72,8 +85,15 @@ export default function CareersPage() {
           employmentType: "FULL_TIME",
           directApply: true,
           hiringOrganization: {
-            "@type": "Organization",
+            "@type": ["Organization", "ITService"],
             name: siteConfig.name,
+            alternateName: [
+              "Netutechno",
+              "netutechno",
+              "Netu Techno",
+              "NETU TECHNO",
+              "NETUTECHNO",
+            ],
             sameAs: siteConfig.url,
             logo: `${siteConfig.url}/images/netu-techno-clean.png`,
           },
@@ -120,9 +140,9 @@ export default function CareersPage() {
 
           <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <SectionHeading
-              badge="Join Our Engineering Guild"
-              title="Build Software That Solves Real-World Problems"
-              description="We build mission-critical digital systems, workflow automations, and scalable platforms. We value clean architectural decisions, engineering ownership, and teams that take pride in craft."
+              badge="Careers at Netu Techno (Netutechno)"
+              title="Build High-Performance Software in an Engineering-First Culture"
+              description="Join the Netu Techno (Netutechno) IT & software engineering guild in Surat, Gujarat. We build mission-critical digital systems, workflow automations, and scalable platforms."
               align="center"
             />
           </div>
@@ -140,7 +160,7 @@ export default function CareersPage() {
       <ScrollDepthSection isLast>
         <CTASection
           headline="Don't See Your Exact Role Listed?"
-          description="We are always looking for exceptional engineers, systems architects, and technical product thinkers. Send your portfolio and an introduction directly to our team."
+          description="At Netu Techno (Netutechno), we are always looking for exceptional software engineers, frontend specialists, and systems architects. Send your portfolio and an introduction directly to our team."
           primaryButtonText="Send an Open Pitch"
           primaryButtonHref={`mailto:${siteConfig.contact.careersEmail}?subject=Open%20Engineering%20Pitch%20-%20Netu%20Techno`}
         />
