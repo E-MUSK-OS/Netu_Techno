@@ -35,7 +35,7 @@ export function ProjectsDirectory({ projects }: ProjectsDirectoryProps) {
     return projects.filter((p) => p.category === selectedCategory);
   }, [projects, selectedCategory]);
 
-  const flagshipProject = projects.find((p) => p.slug === "orderos-ecommerce-warehouse-erp");
+  const flagshipProject = projects.find((p) => p.slug === "orderos") || projects[0];
 
   return (
     <div className="space-y-16">

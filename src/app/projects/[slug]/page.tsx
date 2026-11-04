@@ -596,41 +596,43 @@ async function CaseStudyContent({
           </section>
 
           {/* Previous / Next Case Study Navigation */}
-          <section className="pt-8 border-t border-[#DFD9CD]">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {/* Previous Project */}
-              <Link
-                href={`/projects/${prevProject.slug}`}
-                className="card-luxury rounded-2xl p-6 group flex items-center justify-between border border-[#DFD9CD] hover:border-[#C59B27]"
-              >
-                <div className="space-y-1">
-                  <div className="flex items-center gap-1.5 text-xs font-mono text-slate-500">
-                    <ArrowLeft className="w-3.5 h-3.5 text-[#C59B27] group-hover:-translate-x-1 transition-transform" />
-                    <span>PREVIOUS CASE STUDY</span>
+          {featuredProjects.length > 1 && (
+            <section className="pt-8 border-t border-[#DFD9CD]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {/* Previous Project */}
+                <Link
+                  href={`/projects/${prevProject.slug}`}
+                  className="card-luxury rounded-2xl p-6 group flex items-center justify-between border border-[#DFD9CD] hover:border-[#C59B27]"
+                >
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-1.5 text-xs font-mono text-slate-500">
+                      <ArrowLeft className="w-3.5 h-3.5 text-[#C59B27] group-hover:-translate-x-1 transition-transform" />
+                      <span>PREVIOUS CASE STUDY</span>
+                    </div>
+                    <h4 className="text-base sm:text-lg font-bold text-[#273138] group-hover:text-[#8C6D15] transition-colors truncate max-w-xs">
+                      {prevProject.title}
+                    </h4>
                   </div>
-                  <h4 className="text-base sm:text-lg font-bold text-[#273138] group-hover:text-[#8C6D15] transition-colors truncate max-w-xs">
-                    {prevProject.title}
-                  </h4>
-                </div>
-              </Link>
+                </Link>
 
-              {/* Next Project */}
-              <Link
-                href={`/projects/${nextProject.slug}`}
-                className="card-luxury rounded-2xl p-6 group flex items-center justify-between border border-[#DFD9CD] hover:border-[#C59B27] text-right"
-              >
-                <div className="space-y-1 ml-auto">
-                  <div className="flex items-center justify-end gap-1.5 text-xs font-mono text-slate-500">
-                    <span>NEXT CASE STUDY</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#C59B27] group-hover:translate-x-1 transition-transform" />
+                {/* Next Project */}
+                <Link
+                  href={`/projects/${nextProject.slug}`}
+                  className="card-luxury rounded-2xl p-6 group flex items-center justify-between border border-[#DFD9CD] hover:border-[#C59B27] text-right"
+                >
+                  <div className="space-y-1 ml-auto">
+                    <div className="flex items-center justify-end gap-1.5 text-xs font-mono text-slate-500">
+                      <span>NEXT CASE STUDY</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-[#C59B27] group-hover:translate-x-1 transition-transform" />
+                    </div>
+                    <h4 className="text-base sm:text-lg font-bold text-[#273138] group-hover:text-[#8C6D15] transition-colors truncate max-w-xs">
+                      {nextProject.title}
+                    </h4>
                   </div>
-                  <h4 className="text-base sm:text-lg font-bold text-[#273138] group-hover:text-[#8C6D15] transition-colors truncate max-w-xs">
-                    {nextProject.title}
-                  </h4>
-                </div>
-              </Link>
-            </div>
-          </section>
+                </Link>
+              </div>
+            </section>
+          )}
         </div>
       </main>
 
