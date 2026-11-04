@@ -48,6 +48,7 @@ export const siteConfig = {
     { title: "Home", href: "/" },
     { title: "About", href: "/about" },
     { title: "Services", href: "/services" },
+    { title: "Projects", href: "/projects" },
     { title: "Careers", href: "/careers" },
     { title: "Blogs", href: "/blog" },
     { title: "Contact Us", href: "/contact" },
