@@ -152,9 +152,19 @@ export function Footer() {
 
         {/* Footer Bottom Bar */}
         <div className="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 text-center sm:text-left">
-          <p>
-            © {currentYear} {siteConfig.name} (Netutechno). All rights reserved. IT & Custom Software Development Company, Surat, Gujarat.
-          </p>
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1">
+            <p>
+              © {currentYear} {siteConfig.name} (Netutechno). All rights reserved. IT & Custom Software Development Company, Surat, Gujarat.
+            </p>
+            <span className="hidden sm:inline text-slate-600">•</span>
+            <Link
+              href="/privacy-policy"
+              onClick={() => scrollToTop(true)}
+              className="text-slate-400 hover:text-[#E5C365] transition-colors whitespace-nowrap"
+            >
+              Privacy Policy
+            </Link>
+          </div>
           <div className="flex flex-wrap items-center justify-center sm:justify-end gap-5 sm:gap-6">
             <a
               href={siteConfig.contact.whatsapp}
